@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { m, LazyMotion, domAnimation } from "framer-motion";
 import { slideInFromLeft, slideInFromRight, fadeIn } from "@/utils/motion";
-
+import CTAButton from "./CTAButton";
 export default function Hero() {
 	return (
 		<LazyMotion features={domAnimation}>
@@ -10,7 +10,7 @@ export default function Hero() {
 				initial="hidden"
 				animate="visible"
 				className="flex flex-col lg:flex-row items-center justify-between gap-10 w-full h-full m-auto pb-16 z-10">
-				<div className="flex flex-col gap-6 mt-6 text-5xl md:text-6xl text-white max-w-[600px] w-auto h-auto">
+				<div className="flex flex-col gap-6 mt-6 text-4xl md:text-6xl text-white max-w-[600px] w-auto h-auto">
 					<m.span variants={slideInFromLeft(0.5)}>
 						Explore and play
 						<p className="text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-green-600">
@@ -18,11 +18,16 @@ export default function Hero() {
 							React Games{" "}
 						</p>
 					</m.span>
+					<m.div variants={slideInFromLeft(1)} className="flex lg:block">
+						<CTAButton />
+					</m.div>
 				</div>
 				<m.div
 					variants={slideInFromRight(0.5)}
 					className="bg-violet-500/10 rounded-3xl">
-					<m.div variants={fadeIn(1.2)} className="backdrop-blur-lg rounded-3xl ">
+					<m.div
+						variants={fadeIn(1.2)}
+						className="backdrop-blur-lg rounded-3xl ">
 						<Image
 							src="/Hero.png"
 							alt="Hero section react arcadeillustration"
