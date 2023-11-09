@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { inter } from "@/lib/fonts";
+import { audiowide } from "@/lib/fonts";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 
@@ -16,7 +16,7 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="en">
-			<body className={inter.className}>
+			<body className={audiowide.className}>
 				<Navbar />
 				{children}
 			</body>
