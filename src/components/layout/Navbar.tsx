@@ -1,10 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { BsGithub } from "react-icons/bs";
+import { pixelFont } from "@/lib/fonts";
 
 export default function Navbar() {
 	return (
-		<div className="w-full h-20 fixed top-0 shadow-lg shadow-violet-950/50 bg-white/10 backdrop-blur-md z-50 lg:px-10">
+		<div className="w-full h-20 fixed top-0 shadow-lg shadow-violet-950/50 bg-white/10 backdrop-blur-md z-50 lg:px-7">
 			<div className="w-full h-full flex flex-row items-center justify-between m-auto px-3 overflow-hidden">
 				<Link
 					href="/"
@@ -17,7 +18,8 @@ export default function Navbar() {
 						className="cursor-pointer hover:animate-spin-slow "
 					/>
 
-					<span className="font-bold text-xl lg:text-2xl text-transparent  bg-clip-text bg-gradient-to-r from-purple-500 to-pink-600">
+					<span
+						className={`text-base lg:text-xl text-transparent  bg-clip-text bg-gradient-to-r from-purple-500 to-pink-600 ${pixelFont.className}`}>
 						React Arcade Zone
 					</span>
 				</Link>
