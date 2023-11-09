@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { audiowide } from "@/lib/fonts";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
-
+import { Providers } from "./providers";
 
 export const metadata: Metadata = {
 	title: "React Arcade Zone",
@@ -15,10 +15,10 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<html lang="en">
+		<html lang="en" className="dark">
 			<body className={audiowide.className}>
 				<Navbar />
-				{children}
+				<Providers>{children}</Providers>
 			</body>
 		</html>
 	);
