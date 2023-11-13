@@ -18,10 +18,10 @@ export default function Navbar() {
 						className="cursor-pointer hover:animate-spin-slow "
 					/>
 
-					<span
+					<h2
 						className={`text-base lg:text-xl text-transparent  bg-clip-text bg-gradient-to-r from-purple-500 to-pink-600 ${pixelFont.className}`}>
 						React Arcade Zone
-					</span>
+					</h2>
 				</Link>
 
 				<div className="flex flex-row gap-5">

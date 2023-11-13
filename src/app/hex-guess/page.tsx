@@ -29,24 +29,39 @@ function generateHex() {
 }
 
 export default function Home() {
-	const [hex, setHex] = useState<string>("#702256");
-    useEffect(() => {
-        console.log(hex)
-    }, [hex])
+	// Hex to Guess
+	const [hex, setHex] = useState<string>("#000000");
+	const [isClient, setIsClient] = useState(false); // State to track client-side rendering
+
+	useEffect(() => {
+		setHex(generateHex()); // Set hex value on client side
+		setIsClient(true); // Mounted on client
+	}, []);
+
+	// Is user's answer correct
+	const [isCorrect, setCorrect] = useState(false);
 
 	return (
 		<main className="pt-20 flex flex-col justify-around items-center min-h-screen">
 			<h1 className="text-5xl">Hex Guess</h1>
-			<section>
-				<div className={` w-96 h-96 block `} style={{ backgroundColor: hex }}>
+			<section className=" ">
+				<div className={` w-96 h-96 `} style={{ backgroundColor: hex }}>
 					{" "}
 				</div>
-				<button
-					onClick={() => setHex((hex) => (hex = generateHex()))}
-					className="text-white">
-					{" "}
-					Generate
-				</button>
+
+				{isClient && (
+					<div className="flex justify-center flex-col">
+						<button
+							onClick={() => setHex((hex) => (hex = generateHex()))}
+							className="text-white ">
+							{hex}
+						</button>
+
+						{Array.from({ length: 3 }).map((_, index) => (
+							<button key={index}>{generateHex()}</button>
+						))}
+					</div>
+				)}
 			</section>
 		</main>
 	);
