@@ -35,3 +35,5 @@ The, open [http://localhost:3000](http://localhost:3000) with your browser to se
 - Hangman
 - Sudoku
 - MineSweeper
+- Ping Pong
+- Aliens Invasion
