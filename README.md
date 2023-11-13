@@ -23,11 +23,10 @@ The, open [http://localhost:3000](http://localhost:3000) with your browser to se
 ## Games
 
 **Avaliable:**
-- Nothing :(
+- Hex Guess
 
 
 **Coming Soon...**
-- Hex Guess
 - Wordle (newer)
 - Tic Tac Toe (3x3)
 - Pair Match
