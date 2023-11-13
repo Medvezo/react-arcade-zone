@@ -5,7 +5,7 @@ import Navbar from "@/components/layout/Navbar";
 import { Providers } from "./providers";
 
 export const metadata: Metadata = {
-	title: "React Arcade Zone",
+	title: { default: "React Arcade Zone", template: "%s | Arcade Zone" },
 	description: "React Arcade Zone is games hub built by React and Next JS 14.",
 };
 
