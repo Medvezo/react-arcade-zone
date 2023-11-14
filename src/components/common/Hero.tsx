@@ -9,7 +9,7 @@ export default function Hero() {
 			<m.section
 				initial="hidden"
 				animate="visible"
-				className="flex flex-col lg:flex-row items-center justify-between gap-10 w-full h-full m-auto pb-16 z-10 py-20 lg:py-32">
+				className="flex flex-col xl:flex-row items-center justify-between gap-10 w-full h-full m-auto pb-16 z-10 py-20 lg:py-32">
 				<div className="flex flex-col gap-6 mt-6 text-4xl md:text-6xl text-white max-w-[600px] w-auto h-auto">
 					<m.span variants={slideInFromLeft(0.5)}>
 						Explore and play
@@ -27,12 +27,12 @@ export default function Hero() {
 					className="bg-violet-500/10 rounded-3xl">
 					<m.div
 						variants={fadeIn(1.2)}
-						className="backdrop-blur-lg rounded-3xl ">
+						className="backdrop-blur-2xl rounded-3xl ">
 						<Image
 							src="/Hero.png"
-							alt="Hero section react arcadeillustration"
+							alt="Hero section react arcade illustration"
 							width={600}
-							height={300}
+							height={600}
 							className="rounded-3xl  "
 						/>
 					</m.div>

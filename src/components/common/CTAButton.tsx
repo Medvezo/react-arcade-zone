@@ -19,10 +19,10 @@ export default function CTAButton({ href }: { href?: string }) {
 		);
 	} else {
 		return (
-			<a href={href}>
+			<a href={href} className="w-full m-auto">
 				<Button
 					href={href}
-					className={`text-xl w-1/2 m-auto ${pixelFont.className}`}
+					className={`text-xl w-full xl:w-1/2  ${pixelFont.className}`}
 					variant="solid"
 					color="success"
 					type="button">

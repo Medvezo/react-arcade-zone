@@ -5,7 +5,7 @@ import { pixelFont } from "@/lib/fonts";
 
 export default function Navbar() {
 	return (
-		<div className="w-full h-20 fixed top-0 shadow-lg shadow-violet-600/40 bg-white/10 backdrop-blur-md z-50 lg:px-7">
+		<div className="w-full h-20 fixed top-0 shadow-lg shadow-violet-600/40 bg-violet/30 backdrop-blur-lg z-50 lg:px-7">
 			<div className="w-full h-full flex flex-row items-center justify-between m-auto px-3 overflow-hidden">
 				<Link
 					href="/"

@@ -1,6 +1,8 @@
 import { games } from "@/lib/const";
 import Link from "next/link";
 import { pixelFont } from "@/lib/fonts";
+import Image from "next/image";
+
 export default function GamesGrid() {
 	return (
 		<section className="z-10 min-h-screen pt-16 lg:pt-32" id="games">
@@ -10,8 +12,16 @@ export default function GamesGrid() {
 					<Link
 						key={index}
 						href={game.href}
-						className="min-w-max h-full border-white border p-10 rounded-3xl font-bold text-center">
-						{game.title}
+						className="min-w-max h-full border-white backdrop-blur-3xl border rounded-3xl overflow-hidden">
+						<Image
+							src={game.screenshot}
+							alt={`Screenshot of ${game.title} game`}
+							width={150}
+							height={150}
+							className="w-full"
+							quality={50}
+						/>
+						<h3 className="font-bold text-center text-3xl py-3 pb-5 ">{game.title}</h3>
 					</Link>
 				))}
 			</div>

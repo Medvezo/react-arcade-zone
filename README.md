@@ -1,7 +1,7 @@
 # *React Arcade Zone*
 This project is for using react's best practices on games to have fun and showcasing the skills.
 
-![react arcade zone hero section](public/ReadmeHeroSection.png)
+![react arcade zone hero section](public/ReadmeHeroSection.webp)
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`]
 ## Getting Started
