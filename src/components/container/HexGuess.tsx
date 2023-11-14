@@ -59,13 +59,13 @@ export default function HexGuess() {
 	}
 	return (
 		<>
-			<div className="text-2xl text-center mb-5 h-10">
+			<div className="text-2xl lg:text-3xl text-center mb-7 h-6">
 				{isCorrect && <span className="text-green-500">Correct</span>}
 				{isCorrect === false && <span className="text-red-500">Wrong</span>}
 			</div>
 
 			<div
-				className={` w-96 h-96 rounded-3xl`}
+				className={`w-80 h-80 lg:w-96 lg:h-96 rounded-3xl`}
 				style={{ backgroundColor: hex }}>
 				{" "}
 			</div>
