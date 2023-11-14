@@ -1,7 +1,7 @@
 import HexGuess from "@/components/container/HexGuess";
 import { Metadata } from "next";
 
-export const metadta: Metadata = {
+export const metadata: Metadata = {
 	title: "Hex Guess",
 	description:
 		"Game for guessing hex based on hexadecimal convert to RGB value",

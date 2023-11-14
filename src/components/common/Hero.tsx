@@ -9,7 +9,7 @@ export default function Hero() {
 			<m.section
 				initial="hidden"
 				animate="visible"
-				className="flex flex-col lg:flex-row items-center justify-between gap-10 w-full h-full m-auto pb-16 z-10">
+				className="flex flex-col lg:flex-row items-center justify-between gap-10 w-full h-full m-auto pb-16 z-10 py-20 lg:py-32">
 				<div className="flex flex-col gap-6 mt-6 text-4xl md:text-6xl text-white max-w-[600px] w-auto h-auto">
 					<m.span variants={slideInFromLeft(0.5)}>
 						Explore and play
@@ -19,7 +19,7 @@ export default function Hero() {
 						</p>
 					</m.span>
 					<m.div variants={slideInFromLeft(1)} className="flex lg:block">
-						<CTAButton />
+						<CTAButton href="#games"/>
 					</m.div>
 				</div>
 				<m.div
