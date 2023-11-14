@@ -10,7 +10,7 @@ import {
 import { Button } from "@nextui-org/button";
 import { FaRegQuestionCircle } from "react-icons/fa";
 
-export default function LearnMore() {
+export default function LearnMore({ children }: { children: React.ReactNode }) {
 	const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
 	return (
@@ -22,16 +22,10 @@ export default function LearnMore() {
 				<ModalContent>
 					{(onClose) => (
 						<>
-							<ModalHeader className="flex flex-col gap-1">
+							<ModalHeader className="flex flex-col gap-1 text-amber-600">
 								How to Play?
 							</ModalHeader>
-							<ModalBody>
-								<p>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-									Nullam pulvinar risus non risus hendrerit venenatis.
-									Pellentesque sit amet hendrerit risus, sed porttitor quam.
-								</p>
-							</ModalBody>
+							<ModalBody>{children}</ModalBody>
 							<ModalFooter>
 								<Button color="danger" variant="light" onPress={onClose}>
 									Close
