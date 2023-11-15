@@ -19,7 +19,10 @@ export default function RootLayout({
 		<html lang="en" className="dark">
 			<body className={audiowide.className}>
 				<Navbar />
-				<Providers>{children}</Providers>
+				<Providers>
+					<div className="fixed w-full h-screen bg-synth bg-cover blur-xl bg-center bg-no-repeat z-0"></div>
+					{children}
+				</Providers>
 				<Analytics />
 			</body>
 		</html>

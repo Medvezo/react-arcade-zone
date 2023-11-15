@@ -16,7 +16,7 @@ export default function LearnMore({ children }: { children: React.ReactNode }) {
 	return (
 		<>
 			<Button onPress={onOpen} variant="ghost" color="warning" isIconOnly>
-				<FaRegQuestionCircle className="w-6 h-6" />
+				<FaRegQuestionCircle className="w-6 h-6  z-10" />
 			</Button>
 			<Modal backdrop="blur" isOpen={isOpen} onOpenChange={onOpenChange}>
 				<ModalContent>

@@ -71,9 +71,10 @@ export default function HexGuess() {
 			</div>
 
 			{isClient && (
-				<div className="grid grid-cols-2 mt-5 gap-5">
+				<div className="grid grid-cols-2 mt-5 gap-5 text-white">
 					{answers?.map((answer, index) => (
 						<Button
+							color="warning"
 							className=""
 							variant="ghost"
 							type="button"
