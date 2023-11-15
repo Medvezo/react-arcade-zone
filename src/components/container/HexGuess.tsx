@@ -1,4 +1,5 @@
 "use client";
+import { audiowide } from "@/lib/fonts";
 import { Button } from "@nextui-org/button";
 import { useEffect, useState } from "react";
 
@@ -59,9 +60,17 @@ export default function HexGuess() {
 	}
 	return (
 		<>
-			<div className="text-2xl lg:text-3xl text-center mb-7 h-6">
-				{isCorrect && <span className="text-green-500">Correct</span>}
-				{isCorrect === false && <span className="text-red-500">Wrong</span>}
+			<div className="text-2xl lg:text-3xl text-center h-12 flex justify-center items-center my-3 lg:mt-5">
+				{isCorrect && (
+					<span className="text-white bg-green-600 rounded-xl p-1 px-3">
+						Correct
+					</span>
+				)}
+				{isCorrect === false && (
+					<span className="text-white bg-red-600  rounded-xl p-1 px-3">
+						Wrong
+					</span>
+				)}
 			</div>
 
 			<div
@@ -74,8 +83,7 @@ export default function HexGuess() {
 				<div className="grid grid-cols-2 mt-5 gap-5 text-white">
 					{answers?.map((answer, index) => (
 						<Button
-							color="warning"
-							className=""
+							className={`${audiowide.className}`}
 							variant="ghost"
 							type="button"
 							key={index}
