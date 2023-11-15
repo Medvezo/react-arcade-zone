@@ -3,6 +3,7 @@ import { audiowide } from "@/lib/fonts";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import { Providers } from "./providers";
+import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
 	title: { default: "React Arcade Zone", template: "%s | Arcade Zone" },
@@ -19,6 +20,7 @@ export default function RootLayout({
 			<body className={audiowide.className}>
 				<Navbar />
 				<Providers>{children}</Providers>
+				<Analytics />
 			</body>
 		</html>
 	);

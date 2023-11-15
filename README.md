@@ -27,12 +27,17 @@ The, open [http://localhost:3000](http://localhost:3000) with your browser to se
 
 
 **Coming Soon...**
-- Wordle (newer)
-- Tic Tac Toe (3x3)
+- Balloon Pop
 - Pair Match
+- Snake Game
+- Tic Tac Toe (3x3)
 - Tic Tac Toe (9x9)
+- Quiz game
 - Hangman
+- Wordle (newer)
 - Sudoku
+- Whack-a-Mole
 - MineSweeper
 - Ping Pong
 - Aliens Invasion
+- Secret Game (keepass)

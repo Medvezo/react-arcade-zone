@@ -52,7 +52,7 @@ export default function Home() {
 								and the remainder gives the second character of the hex pair.
 								For example, an RGB value of 130 (for any of R, G, or B) would
 								be divided into 130/16, giving 8 as the quotient and 2 as the
-								remainder. So, the hex pair for 130 is &apos;82&apos;. Repeat
+								remainder. So, the hex pair for 130 is &apos;82&apos;0. Repeat
 								this for each RGB component and concatenate the results to get
 								the full Hex code.
 							</li>
