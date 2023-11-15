@@ -18,7 +18,7 @@ export default function LearnMore({ children }: { children: React.ReactNode }) {
 			<Button onPress={onOpen} variant="ghost" color="warning" isIconOnly>
 				<FaRegQuestionCircle className="w-6 h-6  z-10" />
 			</Button>
-			<Modal backdrop="blur" className="h-screen lg:h-fit overflow-y-scroll  " isOpen={isOpen} onOpenChange={onOpenChange}>
+			<Modal backdrop="blur" className="max-h-screen lg:h-fit overflow-y-scroll  " isOpen={isOpen} onOpenChange={onOpenChange}>
 				<ModalContent>
 					{(onClose) => (
 						<>

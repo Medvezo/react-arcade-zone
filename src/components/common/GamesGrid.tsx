@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export default function GamesGrid() {
 	return (
-		<section className="z-10 min-h-screen pt-16 lg:pt-32" id="games">
+		<section className="z-10 pt-16 lg:pt-32" id="games">
 			<h2 className={`text-center text-3xl  ${pixelFont.className}`}>Games</h2>
 			<div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-4 gap-10 pt-16">
 				{games.map((game, index) => (
@@ -25,6 +25,7 @@ export default function GamesGrid() {
 					</Link>
 				))}
 			</div>
+			<p className="text-center text-2xl my-10">More games to come...</p>
 		</section>
 	);
 }
