@@ -38,6 +38,9 @@ The, open [http://localhost:3000](http://localhost:3000) with your browser to se
 - Sudoku
 - Whack-a-Mole
 - MineSweeper
-- Ping Pong
+- Ping Pong (2d)
 - Aliens Invasion
-- Secret Game (keepass)
+- Secret Game (keepass) 
+
+#### Hooks to use
+*https://chat.openai.com/share/3c76bd5c-0069-41df-875f-f04146cf3a2d*
