@@ -1,3 +1,4 @@
+"use client"
 import { createContext, useReducer } from "react";
 import { initialState, reducer } from "./balloon-store";
 
