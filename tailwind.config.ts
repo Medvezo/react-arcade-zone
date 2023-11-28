@@ -14,6 +14,7 @@ const config: Config = {
 			backgroundImage: {
 				synth: "url('/SynthWaveBG.jpeg')",
 				arcade: "url('/ArcadeMachine-removebg.png')",
+				balloons: "url('/balloons-pop/background.webp')" ,
 				"gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
 				"gradient-conic":
 					"conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
