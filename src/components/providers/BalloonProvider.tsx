@@ -12,7 +12,7 @@ const BalloonContext = createContext<TBalloonContext>({
 	dispatch: () => null,
 });
 
-export default function BalloonProvider({
+export function BalloonProvider({
 	children,
 }: {
 	children: React.ReactNode;
@@ -24,3 +24,5 @@ export default function BalloonProvider({
 		</BalloonContext.Provider>
 	);
 }
+
+export default BalloonContext;

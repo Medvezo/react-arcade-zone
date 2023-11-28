@@ -3,15 +3,12 @@ const initialState = {
 	currentScore: 0,
 };
 
-type Treducer = {
-	state: any;
-	action: {
-		payload: number;
-		type: string;
-	};
+type Taction = {
+	payload: number;
+	type: string;
 };
 
-function reducer({ state, action }: Treducer) {
+function reducer(state: any, action: Taction) {
 	switch (action.type) {
 		case "set_high_score":
 			return {

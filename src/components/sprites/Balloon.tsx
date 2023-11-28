@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import BalloonContext from "../providers/BalloonProvider";
 
 type TBalloon = {
 	audio: HTMLAudioElement | null;
@@ -18,6 +19,7 @@ const scores = {
 // Audio of popping balloons
 
 export default function Balloon({ color, audio }: TBalloon) {
+	const { dispatch } = useContext(BalloonContext);
 	const [x, setX] = useState<number>();
 	const [y, setY] = useState<number>();
 
@@ -25,6 +27,8 @@ export default function Balloon({ color, audio }: TBalloon) {
 
 	// Handle popping on balloon
 	const pop = () => {
+		dispatch({ type: "increment_score", payload: scores[color] });
+
 		audio?.play();
 		setIsPopped(true);
 	};
