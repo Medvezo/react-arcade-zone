@@ -1,3 +1,4 @@
+"use client";
 import Balloon from "../sprites/Balloon";
 
 export default function BalloonCanvas() {
