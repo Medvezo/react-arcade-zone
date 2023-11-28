@@ -3,15 +3,23 @@ import Image from "next/image";
 import { useState } from "react";
 
 type TBalloon = {
-	color: "blue" | "green" | "pink" | "red" | "yellow";
+	color: "blue" | "green" | "pink" | "yellow" | "red";
+};
+
+const scores = {
+	blue: 1,
+	green: 2,
+	pink: 3,
+	yellow: 4,
+	red: 5,
 };
 
 // Audio of popping balloons
 const audio = new Audio("/balloons-pop/pop-sound.mp3");
 
 export default function Balloon({ color }: TBalloon) {
-	const [x, setX] = useState();
-	const [y, setY] = useState();
+	const [x, setX] = useState<number>();
+	const [y, setY] = useState<number>();
 
 	const [isPopped, setIsPopped] = useState(false);
 
