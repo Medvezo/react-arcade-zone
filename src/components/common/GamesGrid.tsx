@@ -12,16 +12,18 @@ export default function GamesGrid() {
 					<Link
 						key={index}
 						href={game.href}
-						className="min-w-max h-full border-white backdrop-blur-3xl border rounded-3xl overflow-hidden">
+						className="min-w-max h-full flex justify-between items-center flex-col  border-white backdrop-blur-3xl border rounded-3xl overflow-hidden">
 						<Image
 							src={game.screenshot}
 							alt={`Screenshot of ${game.title} game`}
 							width={150}
 							height={150}
-							className="w-full"
+							className="w-full object-cover object-center max-h-60  flex-grow-0 flex-shrink-0 "
 							quality={50}
 						/>
-						<h3 className="font-bold text-center text-3xl py-3 pb-5 ">{game.title}</h3>
+						<div className="font-bold text-center text-3xl py-3 pb-5 ">
+							<h3 className=" ">{game.title}</h3>
+						</div>
 					</Link>
 				))}
 			</div>

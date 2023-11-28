@@ -12,6 +12,7 @@ export const metadata: Metadata = {
 export default function Home() {
 	return (
 		<>
+			<div className="fixed w-full h-screen bg-synth bg-cover blur-xl bg-center bg-no-repeat z-0"></div>
 			<main className="  gap-5 min-h-screen  pt-16 px-3 lg:px-5 flex justify-center items-center ">
 				<div className="flex flex-col justify-center items-center w-full h-auto lg:w-auto rounded-3xl  py-10 lg:p-20 lg:px-40 z-10 bg-teal-950/40 backdrop-blur-3xl">
 					<div className="flex gap-5 justify-center items-center">
