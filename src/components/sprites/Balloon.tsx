@@ -6,7 +6,6 @@ import { motion } from "framer-motion";
 import { balloonVariants } from "@/utils/motion";
 import { scores } from "@/lib/const";
 import useRandomPosition from "@/hooks/useRandomPosition";
-import { audio } from "../container/BalloonCanvas";
 
 type TBalloon = {
 	color: "blue" | "green" | "pink" | "yellow" | "red";
@@ -17,11 +16,12 @@ export default function Balloon({ color }: TBalloon) {
 
 	const [isPopped, setIsPopped] = useState(false); // to unmount component
 
-	const [ranX, ranY] = useRandomPosition() 	// getting random x,y from custom hook 
+	const [ranX, ranY] = useRandomPosition(); // getting random x,y from custom hook
 
 	// Handle popping on balloon
 	const pop = () => {
 		dispatch({ type: "increment_score", payload: scores[color] });
+		const audio = new Audio("/balloons-pop/pop-sound.mp3");
 
 		audio.play();
 		setIsPopped(true);

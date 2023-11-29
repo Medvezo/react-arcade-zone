@@ -3,7 +3,6 @@ import { useEffect, useState, useContext } from "react";
 import Balloon from "../sprites/Balloon";
 import BalloonContext from "../providers/BalloonProvider";
 
-export const audio = new Audio("/balloons-pop/pop-sound.mp3");
 
 export default function BalloonCanvas() {
 	const { state } = useContext(BalloonContext);
