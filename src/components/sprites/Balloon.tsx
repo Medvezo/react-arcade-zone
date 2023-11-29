@@ -2,6 +2,8 @@
 import Image from "next/image";
 import { useState, useContext } from "react";
 import BalloonContext from "../providers/BalloonProvider";
+import { motion } from "framer-motion";
+import { balloonVariants } from "@/lib/motions";
 
 type TBalloon = {
 	audio: HTMLAudioElement | null;
@@ -38,13 +40,21 @@ export default function Balloon({ color, audio }: TBalloon) {
 	}
 
 	return (
-		<Image
-			onClick={pop}
-			src={`/balloons-pop/${color}-Baloon.webp`}
-			alt={`${color} balloon`}
-			width={50}
-			height={100}
-			className="z-10"
-		/>
+		<motion.div
+			initial="initial"
+			animate="animate"
+			custom={scores[color]}
+			variants={balloonVariants}
+			className="absolute z-10"
+			>
+			<Image
+				onClick={pop}
+				src={`/balloons-pop/${color}-Baloon.webp`}
+				alt={`${color} balloon`}
+				width={50}
+				height={100}
+				className="z-10"
+			/>
+		</motion.div>
 	);
 }

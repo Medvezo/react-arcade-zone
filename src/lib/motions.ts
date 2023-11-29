@@ -7,7 +7,7 @@ export const balloonVariants = {
 		x: "100vhw",
 		y: "100vh",
 		transition: {
-			duration: score * 2,
+			duration: 20 / score,
 			ease: "linear",
 		},
 	}),

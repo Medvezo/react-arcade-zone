@@ -30,6 +30,10 @@ html {
   scroll-behavior: smooth;
 }
 
+img{
+  user-select: none;
+}
+
 
 /*! SCROLLBAR  */
 /* width */
