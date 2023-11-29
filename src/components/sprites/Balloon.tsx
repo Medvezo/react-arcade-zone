@@ -3,22 +3,21 @@ import Image from "next/image";
 import { useState, useContext } from "react";
 import BalloonContext from "../providers/BalloonProvider";
 import { motion } from "framer-motion";
-import { balloonVariants } from "@/lib/motions";
+import { balloonVariants } from "@/utils/motion";
 import { scores } from "@/lib/const";
+import useRandomPosition from "@/hooks/useRandomPosition";
 
 type TBalloon = {
 	audio: HTMLAudioElement | null;
 	color: "blue" | "green" | "pink" | "yellow" | "red";
 };
 
-// Audio of popping balloons
-
 export default function Balloon({ color, audio }: TBalloon) {
-	const { dispatch } = useContext(BalloonContext);
-	const [x, setX] = useState<number>();
-	const [y, setY] = useState<number>();
+	const { dispatch } = useContext(BalloonContext); // to increment score on pop
 
-	const [isPopped, setIsPopped] = useState(false);
+	const [isPopped, setIsPopped] = useState(false); // to unmount component
+
+	const [ranX, ranY] = useRandomPosition() 	// getting random x,y from custom hook 
 
 	// Handle popping on balloon
 	const pop = () => {
@@ -37,7 +36,7 @@ export default function Balloon({ color, audio }: TBalloon) {
 			onClick={pop}
 			initial="initial"
 			animate="animate"
-			custom={scores[color]}
+			custom={[ranX, ranY, scores[color]]}
 			variants={balloonVariants}
 			className="absolute z-10">
 			<Image

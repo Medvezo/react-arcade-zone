@@ -14,7 +14,7 @@ export default function BalloonCanvas() {
 	}, []);
 
 	return (
-		<section className="w-full h-full pt-24 z-10 flex justify-center overflow-hidden">
+		<section className="w-full h-full pt-24 z-10  overflow-hidden">
 			<p className="z-10 text-green-500 text-3xl">
 				Score: {state.currentScore}
 			</p>

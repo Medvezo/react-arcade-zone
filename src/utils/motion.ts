@@ -50,3 +50,18 @@ export function fadeIn(delay: number) {
 		},
 	};
 }
+
+export const balloonVariants = {
+	initial: ([ranX, ranY]: [number, number]) => ({
+		x: `${ranX}vw`,
+		y: `${ranY}vh`,
+	}),
+	animate: ([, , score]: [number, number, number]) => ({
+		x: "100vhw",
+		y: "79vh",
+		transition: {
+			duration: 20 / score,
+			ease: "linear",
+		},
+	}),
+};
