@@ -6,13 +6,13 @@ import { motion } from "framer-motion";
 import { balloonVariants } from "@/utils/motion";
 import { scores } from "@/lib/const";
 import useRandomPosition from "@/hooks/useRandomPosition";
+import { audio } from "../container/BalloonCanvas";
 
 type TBalloon = {
-	audio: HTMLAudioElement | null;
 	color: "blue" | "green" | "pink" | "yellow" | "red";
 };
 
-export default function Balloon({ color, audio }: TBalloon) {
+export default function Balloon({ color }: TBalloon) {
 	const { dispatch } = useContext(BalloonContext); // to increment score on pop
 
 	const [isPopped, setIsPopped] = useState(false); // to unmount component
@@ -23,7 +23,7 @@ export default function Balloon({ color, audio }: TBalloon) {
 	const pop = () => {
 		dispatch({ type: "increment_score", payload: scores[color] });
 
-		audio?.play();
+		audio.play();
 		setIsPopped(true);
 	};
 
