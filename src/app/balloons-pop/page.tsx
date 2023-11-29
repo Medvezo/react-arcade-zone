@@ -1,5 +1,5 @@
 import BalloonCanvas from "@/components/container/BalloonCanvas";
-import {BalloonProvider} from "@/components/providers/BalloonProvider";
+import { BalloonProvider } from "@/components/providers/BalloonProvider";
 
 export default function Home() {
 	return (

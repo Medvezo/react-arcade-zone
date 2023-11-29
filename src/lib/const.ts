@@ -10,3 +10,12 @@ export const games = [
 		screenshot: '/balloons-pop/Air-Baloons-Raw.png'	
 	}
 ];
+
+
+export const scores = {
+	blue: 1,
+	green: 2,
+	pink: 3,
+	yellow: 4,
+	red: 5,
+};

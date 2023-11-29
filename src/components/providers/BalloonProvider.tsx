@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { createContext, useReducer } from "react";
 import { initialState, reducer } from "./balloon-store";
 
@@ -12,11 +12,7 @@ const BalloonContext = createContext<TBalloonContext>({
 	dispatch: () => null,
 });
 
-export function BalloonProvider({
-	children,
-}: {
-	children: React.ReactNode;
-}) {
+export function BalloonProvider({ children }: { children: React.ReactNode }) {
 	const [state, dispatch] = useReducer(reducer, initialState);
 	return (
 		<BalloonContext.Provider value={{ state, dispatch }}>

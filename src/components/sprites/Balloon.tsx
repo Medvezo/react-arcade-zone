@@ -4,18 +4,11 @@ import { useState, useContext } from "react";
 import BalloonContext from "../providers/BalloonProvider";
 import { motion } from "framer-motion";
 import { balloonVariants } from "@/lib/motions";
+import { scores } from "@/lib/const";
 
 type TBalloon = {
 	audio: HTMLAudioElement | null;
 	color: "blue" | "green" | "pink" | "yellow" | "red";
-};
-
-const scores = {
-	blue: 1,
-	green: 2,
-	pink: 3,
-	yellow: 4,
-	red: 5,
 };
 
 // Audio of popping balloons
