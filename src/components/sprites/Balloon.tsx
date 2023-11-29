@@ -8,7 +8,7 @@ import { scores } from "@/lib/const";
 import useRandomPosition from "@/hooks/useRandomPosition";
 
 type TBalloon = {
-	color: "blue" | "green" | "pink" | "yellow" | "red";
+	color: keyof typeof scores ;
 };
 
 export default function Balloon({ color }: TBalloon) {

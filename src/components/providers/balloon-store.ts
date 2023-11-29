@@ -4,7 +4,7 @@ const initialState = {
 };
 
 type Taction = {
-	payload: number;
+	payload: number ;
 	type: string;
 };
 

@@ -5,12 +5,11 @@ export const games = [
 		screenshot: "/Hex-Guess-Screenshot-min.webp",
 	},
 	{
-		title: 'Balloons Pop',
-		href: '/balloons-pop',
-		screenshot: '/balloons-pop/Air-Baloons-Raw.png'	
-	}
+		title: "Balloons Pop",
+		href: "/balloons-pop",
+		screenshot: "/balloons-pop/Air-Baloons-Raw.png",
+	},
 ];
-
 
 export const scores = {
 	blue: 1,
@@ -19,3 +18,5 @@ export const scores = {
 	yellow: 4,
 	red: 5,
 };
+
+export const balloons: (keyof typeof scores)[] = ["blue", "green", "pink", "yellow", "red"];

@@ -38,7 +38,8 @@ h2,
 h3,
 h4,
 main,
-section {
+section,
+div {
 	user-select: none;
 }
 
