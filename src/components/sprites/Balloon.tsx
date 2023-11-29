@@ -41,14 +41,13 @@ export default function Balloon({ color, audio }: TBalloon) {
 
 	return (
 		<motion.div
+			onClick={pop}
 			initial="initial"
 			animate="animate"
 			custom={scores[color]}
 			variants={balloonVariants}
-			className="absolute z-10"
-			>
+			className="absolute z-10">
 			<Image
-				onClick={pop}
 				src={`/balloons-pop/${color}-Baloon.webp`}
 				alt={`${color} balloon`}
 				width={50}

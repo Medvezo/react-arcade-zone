@@ -5,7 +5,7 @@ export const balloonVariants = {
 	},
 	animate: (score: number) => ({
 		x: "100vhw",
-		y: "100vh",
+		y: "79vh",
 		transition: {
 			duration: 20 / score,
 			ease: "linear",

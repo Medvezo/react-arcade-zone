@@ -14,7 +14,7 @@ export default function BalloonCanvas() {
 	}, []);
 
 	return (
-		<section className="w-full h-full pt-24 z-10 flex justify-center">
+		<section className="w-full h-full pt-24 z-10 flex justify-center overflow-hidden">
 			<p className="z-10 text-green-500 text-3xl">Score: {state.currentScore}</p>
 			<Balloon color="red" audio={audio} />
 			<Balloon color="yellow" audio={audio} />
