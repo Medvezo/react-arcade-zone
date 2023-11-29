@@ -15,7 +15,7 @@ export default function BalloonCanvas() {
 
 	return (
 		<section className="w-full h-full pt-24 z-10  overflow-hidden">
-			<p className="z-10 text-green-500 text-3xl">
+			<p className="z-10 text-green-500 text-3xl fixed top-24">
 				Score: {state.currentScore}
 			</p>
 			<Balloon color="red" audio={audio} />
