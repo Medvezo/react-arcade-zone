@@ -11,12 +11,11 @@ import BalloonContext from "../providers/BalloonProvider";
 import { balloons } from "@/lib/const";
 
 export default function BalloonCanvas() {
-	const { state } = useContext(BalloonContext);
+	const { state, dispatch } = useContext(BalloonContext);
 	const [activeBalloons, setActiveBalloons] = useState<ReactElement[]>([]);
 	const [gameOver, setGameOver] = useState<boolean>(false);
 
-
-	// Func to add balloons 
+	// Func to add balloons
 	const addBalloon = useCallback(() => {
 		const randomColorIndex = Math.floor(Math.random() * balloons.length);
 		setActiveBalloons((prevBalloons) => [
@@ -39,6 +38,12 @@ export default function BalloonCanvas() {
 			return () => clearInterval(interval);
 		}
 	}, [gameOver, addBalloon, state.currentScore]);
+
+	const restartGame = () => {
+		setGameOver(false);
+		setActiveBalloons([]);
+		dispatch({ type: "reset_score" });
+	};
 
 	return (
 		<section className="w-full h-full pt-20 z-10  overflow-hidden">

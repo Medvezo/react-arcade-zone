@@ -4,7 +4,7 @@ const initialState = {
 };
 
 type Taction = {
-	payload: number ;
+	payload: number;
 	type: string;
 };
 
@@ -19,6 +19,11 @@ function reducer(state: any, action: Taction) {
 			return {
 				...state,
 				currentScore: state.currentScore + action.payload,
+			};
+		case "reset_score":
+			return {
+				...state,
+				currentScore: 0,
 			};
 		default:
 			return state;
