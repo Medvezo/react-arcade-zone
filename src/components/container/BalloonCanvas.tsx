@@ -33,7 +33,7 @@ export default function BalloonCanvas() {
 		if (!gameOver) {
 			const interval = setInterval(
 				addBalloon,
-				2000 / ((state.currentScore + 100) * 0.01)
+				2000 / ((state.currentScore + 25) * 0.04)
 			); // coeficient for exponential grow of balloon generation
 
 			return () => clearInterval(interval);

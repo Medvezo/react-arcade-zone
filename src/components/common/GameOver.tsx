@@ -8,6 +8,7 @@ import {
 	JSXElementConstructor,
 } from "react";
 import { Button } from "@nextui-org/button";
+import { VscDebugRestart } from "react-icons/vsc";
 
 type TGameOver = {
 	setGameOver: Dispatch<SetStateAction<boolean>>;
@@ -22,7 +23,7 @@ export default function GameOver({
 }: TGameOver) {
 	const { state, dispatch } = useContext(BalloonContext);
 
-    // Onclick handle to restart game
+	// Onclick handle to restart game
 	const restartGame = () => {
 		setGameOver(false);
 		setActiveBalloons([]);
@@ -31,9 +32,20 @@ export default function GameOver({
 
 	return (
 		<section className="w-full h-screen pt-20 z-10 overflow-hidden flex justify-center items-center flex-col gap-16">
-			<h3 className={`${pixelFont} text-4xl lg:text-6xl text-red-500 z-10`}>Game Over!</h3>
-			<p className="font-bold text-xl">Your score: {state.currentScore}</p>
-			<Button variant="ghost" color="secondary" onClick={restartGame} className="text-white">Restart Game</Button>
+			<h3 className={`${pixelFont} text-4xl lg:text-6xl text-red-500 z-10`}>
+				Game Over!
+			</h3>
+			<p className="text-2xl text-green-800 z-10">Your score: {state.currentScore}</p>
+			<Button
+				variant="ghost"
+				color="secondary"
+				onClick={restartGame}
+				className="text-white text-xl"
+				size="lg"
+				radius="full"
+				startContent={<VscDebugRestart className="h-8 w-8" />}>
+				Restart
+			</Button>
 		</section>
 	);
 }
