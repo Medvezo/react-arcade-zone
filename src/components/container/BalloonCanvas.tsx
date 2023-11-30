@@ -9,6 +9,7 @@ import {
 import Balloon from "../sprites/Balloon";
 import BalloonContext from "../providers/BalloonProvider";
 import { balloons } from "@/lib/const";
+import GameOver from "../common/GameOver";
 
 export default function BalloonCanvas() {
 	const { state, dispatch } = useContext(BalloonContext);
@@ -39,11 +40,14 @@ export default function BalloonCanvas() {
 		}
 	}, [gameOver, addBalloon, state.currentScore]);
 
-	const restartGame = () => {
-		setGameOver(false);
-		setActiveBalloons([]);
-		dispatch({ type: "reset_score" });
-	};
+	if (gameOver) {
+		return (
+			<GameOver
+				setGameOver={setGameOver}
+				setActiveBalloons={setActiveBalloons}
+			/>
+		);
+	}
 
 	return (
 		<section className="w-full h-full pt-20 z-10  overflow-hidden">
