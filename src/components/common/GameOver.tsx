@@ -30,10 +30,10 @@ export default function GameOver({
 	};
 
 	return (
-		<section className="w-full h-full pt-20 z-10 overflow-hidden flex justify-center items-center flex-col">
-			<h3 className={`${pixelFont} text-3xl `}>Game Over!</h3>
-			<p>{state.currentScore}</p>
-			<Button variant="solid" color="secondary" onClick={restartGame} className="text-white">Restart Game</Button>
+		<section className="w-full h-screen pt-20 z-10 overflow-hidden flex justify-center items-center flex-col gap-16">
+			<h3 className={`${pixelFont} text-4xl lg:text-6xl text-red-500 z-10`}>Game Over!</h3>
+			<p className="font-bold text-xl">Your score: {state.currentScore}</p>
+			<Button variant="ghost" color="secondary" onClick={restartGame} className="text-white">Restart Game</Button>
 		</section>
 	);
 }
