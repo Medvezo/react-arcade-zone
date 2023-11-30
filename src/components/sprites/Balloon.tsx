@@ -8,10 +8,11 @@ import { scores } from "@/lib/const";
 import useRandomPosition from "@/hooks/useRandomPosition";
 
 type TBalloon = {
-	color: keyof typeof scores ;
+	color: keyof typeof scores;
+	onExit: () => void
 };
 
-export default function Balloon({ color }: TBalloon) {
+export default function Balloon({ color, onExit }: TBalloon) {
 	const { dispatch } = useContext(BalloonContext); // to increment score on pop
 
 	const [isPopped, setIsPopped] = useState(false); // to unmount component
@@ -36,6 +37,7 @@ export default function Balloon({ color }: TBalloon) {
 			onClick={pop}
 			initial="initial"
 			animate="animate"
+			onAnimationComplete={onExit}
 			custom={[ranX, ranY, scores[color]]}
 			variants={balloonVariants}
 			className="absolute z-10">
