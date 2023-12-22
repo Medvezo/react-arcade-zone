@@ -20,7 +20,22 @@ export const scores = {
 	red: 5,
 };
 
-export const balloons: (keyof typeof scores)[] = ["blue", "green", "pink", "yellow", "red"];
-
+export const balloons: (keyof typeof scores)[] = [
+	"blue",
+	"green",
+	"pink",
+	"yellow",
+	"red",
+];
 
 //! Pair Match Game
+export const pairs = [
+	{ title: "Capacitor", src: "/pair-match/capacitor-js.svg" },
+	{ title: "Electron", src: "/pair-match/electron.svg" },
+	{ title: "Expo Go", src: "/pair-match/expo.svg" },
+	{ title: "Jest", src: "/pair-match/jest.svg" },
+	{ title: "Next.js", src: "/pair-match/next-js.svg" },
+	{ title: "Redux", src: "/pair-match/redux.svg" },
+	{ title: "TypeScript", src: "/pair-match/typescript.svg" },
+	{ title: "Vite ", src: "/pair-match/vitejs.svg" },
+];
