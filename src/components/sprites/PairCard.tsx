@@ -1,15 +1,10 @@
 import { Card, CardBody, Image } from "@nextui-org/react";
 import NextImage from "next/image";
-export default function PairCard({
-	pair,
-}: {
-	pair: {
-		title: string;
-		src: string;
-	};
-}) {
+import { TPair } from "@/lib/types";
+
+export default function PairCard({ pair }: { pair: TPair }) {
 	return (
-		<Card shadow="sm" isPressable >
+		<Card shadow="sm" isPressable>
 			<CardBody>
 				<Image
 					as={NextImage}
