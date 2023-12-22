@@ -1,5 +1,5 @@
 import { pixelFont } from "@/lib/fonts";
-import BalloonContext from "../providers/BalloonProvider";
+import BalloonContext from "../providers/balloon-pop/BalloonProvider";
 import {
 	useContext,
 	Dispatch,

@@ -11,7 +11,7 @@ export default function Navbar() {
 					href="/"
 					className="h-auto w-auto flex flex-row items-center justify-center gap-3">
 					<Image
-						src="/Logo.png"
+						src="/Logo.webp"
 						alt="logo"
 						width={80}
 						height={80}
