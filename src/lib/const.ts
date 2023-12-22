@@ -2,7 +2,7 @@ export const games = [
 	{
 		title: "Hex Guess",
 		href: "/hex-guess",
-		screenshot: "/Hex-Guess-Screenshot-min.webp",
+		screenshot: "/ss/Hex-Guess-Screenshot-min.webp",
 	},
 	{
 		title: "Balloons Pop",
@@ -11,6 +11,7 @@ export const games = [
 	},
 ];
 
+//! Baloon Pop Game
 export const scores = {
 	blue: 1,
 	green: 2,
@@ -20,3 +21,6 @@ export const scores = {
 };
 
 export const balloons: (keyof typeof scores)[] = ["blue", "green", "pink", "yellow", "red"];
+
+
+//! Pair Match Game
