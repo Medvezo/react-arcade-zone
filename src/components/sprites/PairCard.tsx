@@ -22,13 +22,15 @@ export default function PairCard({
 	}, [revealedGrid, rowIdx, colIdx]);
 	return (
 		<Card shadow="sm" isPressable onClick={() => handleClick(rowIdx, colIdx)}>
-			<CardBody>
+			<CardBody className="m-0 p-0 ">
 				<Image
-					className="lg:w-24 lg:h-24"
+					className={`lg:w-32 lg:h-32 p-3  transition-all duration-300 ease-in-out  ${
+						flipped ? "" : "bg-cyan-950 "
+					}`}
 					as={NextImage}
 					src={flipped ? pair.src : "pair-match/react.svg"}
-					width="70"
-					height="70"
+					width="140"
+					height="140"
 					alt={`${pair.title} logo`}
 				/>
 			</CardBody>
