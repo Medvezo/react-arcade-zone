@@ -1,4 +1,4 @@
-//! Match Pair Game 
+//! Match Pair Game
 export type TPair = {
 	title: string;
 	src: string;
@@ -10,4 +10,9 @@ export type TPairCard = {
 	rowIdx: number;
 	colIdx: number;
 	revealedGrid: boolean[][];
+};
+
+export type Taction = {
+	payload: number;
+	type: string;
 };
