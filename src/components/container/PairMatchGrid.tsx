@@ -30,6 +30,7 @@ export default function PairMatchGrid() {
 		)
 	);
 
+	const [previousClicked, setPreviousClicked] = useState<TPair | null>();
 
 	const handleClick = (rowIdx: number, colIdx: number) => {
 		console.log(`Clicked on row ${rowIdx} and col ${colIdx}`);
@@ -39,7 +40,20 @@ export default function PairMatchGrid() {
 		console.log(revealedGridCopy);
 		setRevealedGrid(revealedGridCopy);
 
-		
+		setPreviousClicked(grid[rowIdx][colIdx]); // Set the previous clicked card
+
+		if (previousClicked) {
+			// second click
+			if (previousClicked?.title === grid[rowIdx][colIdx]?.title) {
+				console.log("Matched!");
+			} else {
+				console.log("Not matched!");
+			}
+			setPreviousClicked(null); // Reset after any event of second click
+		} else {
+			// first click of 2 clicks
+			console.log("Waiting for second click...");
+		}
 	};
 
 	return (
