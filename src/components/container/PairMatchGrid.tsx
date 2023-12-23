@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import PairCard from "@/components/sprites/PairCard";
 import { pairs } from "@/lib/const";
 import { TPair } from "@/lib/types";
+import PairMatchContext from "../providers/pair-match/PairMatchProvider";
 
 export default function PairMatchGrid() {
 	// Define the type for the grid state
@@ -12,6 +13,7 @@ export default function PairMatchGrid() {
 	);
 	const [grid, setGrid] = useState<(TPair | null)[][]>(emptyGrid);
 
+	// useEffect on mount
 	useEffect(() => {
 		// Shuffle the pairs array and replace empty grid with shuffled pairs
 		const pairsShuffled = [...pairs].sort(() => Math.random() - 0.5);
@@ -30,6 +32,7 @@ export default function PairMatchGrid() {
 		)
 	);
 
+	// finding if card is matched or not
 	const [previousClicked, setPreviousClicked] = useState<TPair | null>();
 
 	const handleClick = (rowIdx: number, colIdx: number) => {
@@ -55,6 +58,16 @@ export default function PairMatchGrid() {
 			console.log("Waiting for second click...");
 		}
 	};
+
+	// Context for total moves
+	const { dispatch } = useContext(PairMatchContext);
+	// usEffect on move trigger
+	useEffect(() => {
+		// check the length of previous clicked if 1 then increment moves
+		if (previousClicked) {
+			dispatch({ type: "INCREMENT_MOVES", payload: 1 });
+		}
+	}, [previousClicked, dispatch]);
 
 	return (
 		<div className="flex flex-col gap-3 lg:gap-5 px-3 lg:px-5">
