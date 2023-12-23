@@ -6,7 +6,7 @@ const initialState = {
 
 function reducer(state: any, action: Taction) {
 	switch (action.type) {
-		case "increment_moves":
+		case "INCREMENT_MOVES":
 			return {
 				...state,
 				totalMoves: state.totalMoves + action.payload,
