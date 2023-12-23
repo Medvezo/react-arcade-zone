@@ -12,6 +12,7 @@ export type TPairCard = {
 	revealedGrid: boolean[][];
 };
 
+// ! Store-Provider types
 export type Taction = {
 	payload: number;
 	type: string;
