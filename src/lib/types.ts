@@ -10,6 +10,7 @@ export type TPairCard = {
 	rowIdx: number;
 	colIdx: number;
 	revealedGrid: boolean[][];
+	isMatched: boolean;
 };
 
 // ! Store-Provider types

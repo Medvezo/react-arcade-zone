@@ -40,7 +40,6 @@ export default function PairMatchGrid() {
 		const revealedGridCopy = [...revealedGrid];
 		// Flip the card
 		revealedGridCopy[rowIdx][colIdx] = true;
-		console.log(revealedGridCopy);
 		setRevealedGrid(revealedGridCopy);
 
 		setPreviousClicked(grid[rowIdx][colIdx]); // Set the previous clicked card
@@ -77,6 +76,7 @@ export default function PairMatchGrid() {
 						if (pair) {
 							return (
 								<PairCard
+									isMatched={false}
 									key={`${rowIdx} ${colIdx}`}
 									pair={pair}
 									handleClick={handleClick}
