@@ -9,6 +9,11 @@ export const games = [
 		href: "/balloons-pop",
 		screenshot: "/balloons-pop/Air-Baloons-Raw.png",
 	},
+	{
+		title: "Pair Match",
+		href: "/pair-match",
+		screenshot: "/ss/Pair-Match-SS.webp",
+	},
 ];
 
 //! Baloon Pop Game
