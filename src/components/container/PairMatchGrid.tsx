@@ -32,31 +32,56 @@ export default function PairMatchGrid() {
 		)
 	);
 
+	
 	// finding if card is matched or not
-	const [previousClicked, setPreviousClicked] = useState<TPair | null>();
+	const [previousClicked, setPreviousClicked] = useState<{ pair: TPair | null, row: number, col: number } | null>(null);
+	// To track if pairs matched 
+	const [matchedPairs, setMatchedPairs] = useState<string[]>([]);
 
 	const handleClick = (rowIdx: number, colIdx: number) => {
-		console.log(`Clicked on row ${rowIdx} and col ${colIdx}`);
-		const revealedGridCopy = [...revealedGrid];
-		// Flip the card
-		revealedGridCopy[rowIdx][colIdx] = true;
-		setRevealedGrid(revealedGridCopy);
+    console.log(`Clicked on row ${rowIdx} and col ${colIdx}`);
 
-		setPreviousClicked(grid[rowIdx][colIdx]); // Set the previous clicked card
+	// Prevent clicking the same card twice
+	if (previousClicked && previousClicked.row === rowIdx && previousClicked.col === colIdx) {
+		console.log("Please click a different card.");
+		return;
+	}
 
-		if (previousClicked) {
-			// second click
-			if (previousClicked?.title === grid[rowIdx][colIdx]?.title) {
-				console.log("Matched!");
-			} else {
-				console.log("Not matched!");
-			}
-			setPreviousClicked(null); // Reset after any event of second click
-		} else {
-			// first click of 2 clicks
-			console.log("Waiting for second click...");
-		}
-	};
+    // Flip the current card
+    const newRevealedGrid = [...revealedGrid];
+    newRevealedGrid[rowIdx][colIdx] = true;
+    setRevealedGrid(newRevealedGrid);
+
+    if (previousClicked) {
+
+		
+        // Second click: Check for a match
+        if (previousClicked.pair?.title === grid[rowIdx][colIdx]?.title) {
+            console.log("Matched!");
+
+			// Ensure title is defined before adding to matchedPairs
+            const matchedTitle = grid[rowIdx][colIdx]?.title;
+            if (matchedTitle) {
+                setMatchedPairs(prev => [...prev, matchedTitle]);
+            }  
+		 } 
+		else {
+            console.log("Not matched!");
+			
+            // Flip both cards back after 1 second
+            setTimeout(() => {
+                const flipBackGrid = [...revealedGrid];
+                flipBackGrid[rowIdx][colIdx] = false;
+                flipBackGrid[previousClicked.row][previousClicked.col] = false;
+                setRevealedGrid(flipBackGrid);
+            }, 1000);
+        }
+        setPreviousClicked(null); // Reset after checking for match
+    } else {
+        // First click: Store the clicked card and its position
+        setPreviousClicked({ pair: grid[rowIdx][colIdx], row: rowIdx, col: colIdx });
+    }
+};
 
 	// Context for total moves
 	const { dispatch } = useContext(PairMatchContext);
@@ -76,7 +101,8 @@ export default function PairMatchGrid() {
 						if (pair) {
 							return (
 								<PairCard
-									isMatched={false}
+									isMatched={!grid[rowIdx][colIdx]}
+									matchedPairs={matchedPairs}
 									key={`${rowIdx} ${colIdx}`}
 									pair={pair}
 									handleClick={handleClick}
