@@ -11,7 +11,7 @@ function reducer(state: any, action: Taction) {
 				...state,
 				totalMoves: state.totalMoves + action.payload,
 			};
-		case "reset_moves":
+		case "RESET_MOVES":
 			return {
 				...state,
 				totalMoves: 0,
