@@ -12,7 +12,7 @@ export default function PairCard({
 	colIdx,
 	revealedGrid,
 	matchedPairs,
-	isWaiting
+	isWaiting,
 }: TPairCard) {
 	// Flip on click
 	const [isFlipped, setFlipped] = useState<boolean>(false);
@@ -29,10 +29,11 @@ export default function PairCard({
 
 	return (
 		<Card
-            isDisabled={isCardMatched}
+			isDisabled={isCardMatched}
 			shadow="sm"
-            isPressable={!isCardMatched}
-			onClick={() => !isWaiting && handleClick(rowIdx, colIdx)}>
+			isPressable={!isCardMatched}
+			onClick={() => !isWaiting && handleClick(rowIdx, colIdx)}
+		>
 			<CardBody className="m-0 p-0 ">
 				<Image
 					className={`lg:w-32 lg:h-32 p-3  transition-all duration-300 ease-in-out  ${
