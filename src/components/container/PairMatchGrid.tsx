@@ -17,16 +17,25 @@ export default function PairMatchGrid() {
 	);
 	const [grid, setGrid] = useState<(TPair | null)[][]>(emptyGrid);
 
+	// Shuffle the pairs array and replace empty grid with shuffled pairs function
+	function shufflePairs() {
+		// Duplicate each pair to shuffle them 
+		const duplicatedPairs = [...pairs, ...pairs];
+	
+		// Shuffle duplicated arr
+		const shuffledPairs = duplicatedPairs.sort(() => Math.random() - 0.5);
+	
+		// Split the shuffled array into a 4x4 grid
+		return [
+			shuffledPairs.slice(0, 4),
+			shuffledPairs.slice(4, 8),
+			shuffledPairs.slice(8, 12),
+			shuffledPairs.slice(12, 16)
+		];
+	}
 	// useEffect on mount
 	useEffect(() => {
-		// Shuffle the pairs array and replace empty grid with shuffled pairs
-		const pairsShuffled = [...pairs].sort(() => Math.random() - 0.5);
-		setGrid([
-			[pairsShuffled[5], pairsShuffled[6], pairsShuffled[1], pairsShuffled[2]],
-			[pairsShuffled[2], pairsShuffled[7], pairsShuffled[0], pairsShuffled[7]],
-			[pairsShuffled[1], pairsShuffled[3], pairsShuffled[4], pairsShuffled[5]],
-			[pairsShuffled[4], pairsShuffled[3], pairsShuffled[6], pairsShuffled[0]],
-		]);
+		setGrid(shufflePairs());
 	}, []);
 
 	// Revealed grid of 4x4 cards on click
@@ -123,6 +132,7 @@ export default function PairMatchGrid() {
 
 	const restartGame = () => {
 		// Reset all states
+		setGrid(shufflePairs());
 		setRevealedGrid(Array.from({ length: 4 }, () => new Array(4).fill(false)));
 		setMatchedPairs([]);
 		setIsWaiting(false);
