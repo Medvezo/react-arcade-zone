@@ -38,6 +38,9 @@ export default function PairMatchGrid() {
 	// To track if pairs matched 
 	const [matchedPairs, setMatchedPairs] = useState<string[]>([]);
 
+	// To disable all cards while setTimeout period
+	const [isWaiting, setIsWaiting] = useState(false);
+
 	const handleClick = (rowIdx: number, colIdx: number) => {
     console.log(`Clicked on row ${rowIdx} and col ${colIdx}`);
 
@@ -53,13 +56,11 @@ export default function PairMatchGrid() {
     setRevealedGrid(newRevealedGrid);
 
     if (previousClicked) {
-
-		
         // Second click: Check for a match
         if (previousClicked.pair?.title === grid[rowIdx][colIdx]?.title) {
             console.log("Matched!");
 
-			// Ensure title is defined before adding to matchedPairs
+			// making sure title is defined before adding to matchedPairs
             const matchedTitle = grid[rowIdx][colIdx]?.title;
             if (matchedTitle) {
                 setMatchedPairs(prev => [...prev, matchedTitle]);
@@ -67,13 +68,15 @@ export default function PairMatchGrid() {
 		 } 
 		else {
             console.log("Not matched!");
-			
+
+			setIsWaiting(true); // Disable all cards
             // Flip both cards back after 1 second
             setTimeout(() => {
                 const flipBackGrid = [...revealedGrid];
                 flipBackGrid[rowIdx][colIdx] = false;
                 flipBackGrid[previousClicked.row][previousClicked.col] = false;
                 setRevealedGrid(flipBackGrid);
+				setIsWaiting(false); // Re-enable all cards
             }, 1000);
         }
         setPreviousClicked(null); // Reset after checking for match
@@ -101,7 +104,6 @@ export default function PairMatchGrid() {
 						if (pair) {
 							return (
 								<PairCard
-									isMatched={!grid[rowIdx][colIdx]}
 									matchedPairs={matchedPairs}
 									key={`${rowIdx} ${colIdx}`}
 									pair={pair}
@@ -109,6 +111,7 @@ export default function PairMatchGrid() {
 									rowIdx={rowIdx}
 									colIdx={colIdx}
 									revealedGrid={revealedGrid}
+									isWaiting={isWaiting}
 								/>
 							);
 						}

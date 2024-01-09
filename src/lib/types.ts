@@ -10,8 +10,8 @@ export type TPairCard = {
 	rowIdx: number;
 	colIdx: number;
 	revealedGrid: boolean[][];
-	isMatched: boolean;
 	matchedPairs: string[];
+	isWaiting: boolean;
 };
 
 // ! Store-Provider types
