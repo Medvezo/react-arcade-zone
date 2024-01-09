@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useState, useContext } from "react";
-import BalloonContext from "../providers/BalloonProvider";
+import BalloonContext from "../providers/balloon-pop/BalloonProvider";
 import { motion } from "framer-motion";
 import { balloonVariants } from "@/utils/motion";
 import { scores } from "@/lib/const";

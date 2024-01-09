@@ -7,7 +7,7 @@ import {
 	useCallback,
 } from "react";
 import Balloon from "../sprites/Balloon";
-import BalloonContext from "../providers/BalloonProvider";
+import BalloonContext from "../providers/balloon-pop/BalloonProvider";
 import { balloons } from "@/lib/const";
 import GameOver from "../common/GameOver";
 

@@ -1,11 +1,8 @@
+import { Taction } from "@/lib/types";
+
 const initialState = {
 	highScore: 0,
 	currentScore: 0,
-};
-
-type Taction = {
-	payload: number;
-	type: string;
 };
 
 function reducer(state: any, action: Taction) {
