@@ -5,6 +5,7 @@ import PairCard from "@/components/sprites/PairCard";
 import { pairs } from "@/lib/const";
 import { TPair } from "@/lib/types";
 import PairMatchContext from "../providers/pair-match/PairMatchProvider";
+import { toast } from "react-toastify";
 
 export default function PairMatchGrid() {
 	// Define the type for the grid state
@@ -53,7 +54,7 @@ export default function PairMatchGrid() {
 			previousClicked.row === rowIdx &&
 			previousClicked.col === colIdx
 		) {
-			console.log("Please click a different card.");
+			toast.error("Please click a different card");
 			return;
 		}
 

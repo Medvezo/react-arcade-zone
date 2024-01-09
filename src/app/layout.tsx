@@ -6,7 +6,7 @@ import { Providers } from "./providers";
 import { Analytics } from "@vercel/analytics/react";
 
 // React toastify
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 
 export const metadata: Metadata = {
