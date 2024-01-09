@@ -1,6 +1,6 @@
 "use client";
 
-import { Card, CardBody, Image } from "@nextui-org/react";
+import { Card, CardBody, CardFooter, Image } from "@nextui-org/react";
 import NextImage from "next/image";
 import { TPairCard } from "@/lib/types";
 import { useEffect, useState } from "react";
@@ -33,16 +33,17 @@ export default function PairCard({
 			shadow="sm"
 			isPressable={!isCardMatched}
 			onClick={() => !isWaiting && handleClick(rowIdx, colIdx)}
+			className=""
 		>
 			<CardBody className="m-0 p-0 ">
 				<Image
-					className={`lg:w-32 lg:h-32 p-3  transition-all duration-300 ease-in-out  ${
+					className={`w-32 h-32 p-3 transition-all duration-300 ease-in-out  ${
 						isFlipped ? "" : "bg-cyan-950 "
 					}`}
 					as={NextImage}
 					src={isFlipped ? pair.src : "pair-match/react.svg"}
-					width="140"
-					height="140"
+					width="128"
+					height="128"
 					alt={`${pair.title} logo`}
 				/>
 			</CardBody>

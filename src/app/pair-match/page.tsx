@@ -9,7 +9,7 @@ export default function Home() {
 			<div className="fixed w-full h-screen bg-synth bg-cover blur-2xl bg-center bg-no-repeat z-0" />
 			<PairMatchProvider>
 				<PairMatchHeader />
-				<main className="h-[80vh] flex justify-center items-center ">
+				<main className="h-[70vh] sm:h-[80vh] flex justify-center items-center ">
 					<PairMatchGrid />
 				</main>
 			</PairMatchProvider>

@@ -141,7 +141,7 @@ export default function PairMatchGrid() {
 	};
 
 	return (
-		<div className="flex flex-col gap-3 lg:gap-5 px-3 lg:px-5">
+		<div className="flex flex-col gap-2 lg:gap-5 px-3 lg:px-5">
 			{/* GAME OVER  */}
 			{isGameFinished ? (
 				<div className="z-10 p-10 flex flex-col justify-center items-center gap-5 lg:gap-10">
@@ -165,7 +165,7 @@ export default function PairMatchGrid() {
 			) : (
 				//! MAIN RENDER LOGIC
 				grid.map((row, rowIdx) => (
-					<div key={rowIdx} className="flex gap-5">
+					<div key={rowIdx} className="flex gap-2 lg:gap-5">
 						{row.map((pair, colIdx) => {
 							if (pair) {
 								return (
