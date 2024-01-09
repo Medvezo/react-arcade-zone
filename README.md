@@ -26,10 +26,10 @@ The, open [http://localhost:3000](http://localhost:3000) with your browser to se
 **Avaliable:**
 - Hex Guess
 - Balloon Pop
+- Pair Match
 
 
 **Coming Soon...**
-- Pair Match
 - Inventory management
 - Tic Tac Toe (3x3)
 - Tic Tac Toe (9x9)
