@@ -12,9 +12,10 @@ export default function PairCard({
 	colIdx,
 	revealedGrid,
 	isMatched,
+	matchedPairs
 }: TPairCard) {
 	// Flip on click
-	const [flipped, setFlipped] = useState<boolean>(false);
+	const [isFlipped, setFlipped] = useState<boolean>(false);
 	// useEffect for Click
 	useEffect(() => {
 		if (revealedGrid[rowIdx][colIdx]) {
@@ -24,19 +25,21 @@ export default function PairCard({
 		}
 	}, [revealedGrid, rowIdx, colIdx]);
 
+	const isCardMatched = matchedPairs.includes(pair.title);
+
 	return (
 		<Card
-			isDisabled={isMatched}
+            isDisabled={isCardMatched}
 			shadow="sm"
-			isPressable={!isMatched}
+            isPressable={!isCardMatched}
 			onClick={() => handleClick(rowIdx, colIdx)}>
 			<CardBody className="m-0 p-0 ">
 				<Image
 					className={`lg:w-32 lg:h-32 p-3  transition-all duration-300 ease-in-out  ${
-						flipped ? "" : "bg-cyan-950 "
+						isFlipped ? "" : "bg-cyan-950 "
 					}`}
 					as={NextImage}
-					src={flipped ? pair.src : "pair-match/react.svg"}
+					src={isFlipped ? pair.src : "pair-match/react.svg"}
 					width="140"
 					height="140"
 					alt={`${pair.title} logo`}
