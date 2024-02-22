@@ -26,11 +26,11 @@ export default function TTTCell({ value }: CellType) {
 					cy="50%"
 					fill="none"
 					stroke="red"
-					stroke-width="5"
+					strokeWidth="5"
 				/>
 			</svg>
 		);
 	}
 
-	return <div className="w-20 h-20"> </div>;
+	return <div className=""> </div>;
 }
