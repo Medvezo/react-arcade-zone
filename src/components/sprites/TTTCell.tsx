@@ -32,5 +32,5 @@ export default function TTTCell({ value }: CellType) {
 		);
 	}
 
-	return <div className=""> </div>;
+	return <button className=""> </button>;
 }
