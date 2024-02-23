@@ -1,6 +1,7 @@
 "use client";
 import TTTCell from "@/components/sprites/TTTCell";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext} from "react";
+import TTTContext from "../providers/tic-tac-toe/TTTProvider";
 
 type TTicTacToeGrid = {
 	gridSize: number;
@@ -12,25 +13,26 @@ export default function TicTacToeGrid({ gridSize }: TTicTacToeGrid) {
 		new Array(gridSize).fill(new Array(gridSize).fill(0))
 	);
 
+	const {state, dispatch} = useContext(TTTContext);
+
 	useEffect(() => {
 		console.log("Grid:", grid);
 	}, [grid]);
 	
-	const [nextMove, setNextMove] = useState<1 | -1>(1);
 
 	const handleMoveClick = (rowIdx: number, colIdx: number) => {
 		// spread original grid to make mutation on the copied one
 		const copiedGrid = [...grid];
 
-		if (grid[rowIdx][colIdx] !== nextMove && grid[rowIdx][colIdx] === 0) {
-			copiedGrid[rowIdx][colIdx] = nextMove;
+		if (grid[rowIdx][colIdx] !== state.nextMove && grid[rowIdx][colIdx] === 0) {
+			copiedGrid[rowIdx][colIdx] = state.nextMove;
 			setGrid(copiedGrid);
+			dispatch({type: "MAKE_MOVE"})
 		}
 	};
 
 	return (
 		<>
-			<div className="text-3xl">Tic Tac Toe</div>
 
 			<div
 				style={{
