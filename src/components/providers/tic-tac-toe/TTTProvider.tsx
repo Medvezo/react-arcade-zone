@@ -20,3 +20,5 @@ export function TTTProvider({ children }: { children: React.ReactNode }) {
 		</TTTContext.Provider>
 	);
 }
+
+export default TTTContext;
