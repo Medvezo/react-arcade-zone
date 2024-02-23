@@ -15,6 +15,7 @@ export default function TicTacToeGrid({ gridSize }: TTicTacToeGrid) {
 	useEffect(() => {
 		console.log("Grid:", grid);
 	}, [grid]);
+	
 	const [nextMove, setNextMove] = useState<1 | -1>(1);
 
 	const handleMoveClick = (rowIdx: number, colIdx: number) => {
@@ -32,16 +33,17 @@ export default function TicTacToeGrid({ gridSize }: TTicTacToeGrid) {
 			<div className="text-3xl">Tic Tac Toe</div>
 
 			<div
-				className={`grid grid-cols-${gridSize} w-[400px] sm:w-[500px] bg-teal-700 bg-opacity-30 p-5 rounded-3xl`}
-			>
+				style={{
+					gridTemplateColumns: `repeat(${gridSize}, minmax(0, 1fr))`, // Dynamic columns
+				}}
+				className={`grid w-[400px] sm:w-[500px] bg-teal-700 bg-opacity-30 p-5 rounded-3xl`}>
 				{grid.map((row: Array<number>, rowIdx: number) => (
 					<div key={rowIdx} className=" ">
 						{row.map((cell: number, colIdx: number) => (
 							<div
 								key={`${rowIdx} ${colIdx}`}
 								onClick={() => handleMoveClick(rowIdx, colIdx)}
-								className={` aspect-square border-opacity-50  border  border-white cursor-pointer hover:bg-gray-700 hover:bg-opacity-30`}
-							>
+								className={` aspect-square border-opacity-50  border  border-white cursor-pointer hover:bg-gray-700 hover:bg-opacity-30`}>
 								<TTTCell value={grid[rowIdx][colIdx]} />
 							</div>
 						))}
