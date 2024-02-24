@@ -1,6 +1,6 @@
 "use client";
 import TTTCell from "@/components/sprites/TTTCell";
-import { useEffect, useState, useContext} from "react";
+import { useEffect, useState, useContext } from "react";
 import TTTContext from "../providers/tic-tac-toe/TTTProvider";
 
 type TTicTacToeGrid = {
@@ -10,15 +10,14 @@ type TTicTacToeGrid = {
 export default function TicTacToeGrid({ gridSize }: TTicTacToeGrid) {
 	// Creating grid with initial empty spaces
 	const [grid, setGrid] = useState(
-		new Array(gridSize).fill(new Array(gridSize).fill(0))
+		Array.from({ length: gridSize }, () => new Array(gridSize).fill(0))
 	);
 
-	const {state, dispatch} = useContext(TTTContext);
+	const { state, dispatch } = useContext(TTTContext);
 
 	useEffect(() => {
 		console.log("Grid:", grid);
 	}, [grid]);
-	
 
 	const handleMoveClick = (rowIdx: number, colIdx: number) => {
 		// spread original grid to make mutation on the copied one
@@ -27,13 +26,12 @@ export default function TicTacToeGrid({ gridSize }: TTicTacToeGrid) {
 		if (grid[rowIdx][colIdx] !== state.nextMove && grid[rowIdx][colIdx] === 0) {
 			copiedGrid[rowIdx][colIdx] = state.nextMove;
 			setGrid(copiedGrid);
-			dispatch({type: "MAKE_MOVE"})
+			dispatch({ type: "MAKE_MOVE" });
 		}
 	};
 
 	return (
 		<>
-
 			<div
 				style={{
 					gridTemplateColumns: `repeat(${gridSize}, minmax(0, 1fr))`, // Dynamic columns
