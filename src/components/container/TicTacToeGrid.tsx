@@ -9,7 +9,7 @@ type TTicTacToeGrid = {
 
 export default function TicTacToeGrid({ gridSize }: TTicTacToeGrid) {
 	// Creating grid with initial empty spaces
-	const [grid, setGrid] = useState(
+	const [grid, setGrid] = useState(() =>		// init as () for expensive computation
 		Array.from({ length: gridSize }, () => new Array(gridSize).fill(0))
 	);
 
@@ -20,13 +20,13 @@ export default function TicTacToeGrid({ gridSize }: TTicTacToeGrid) {
 	}, [grid]);
 
 	const handleMoveClick = (rowIdx: number, colIdx: number) => {
-		// spread original grid to make mutation on the copied one
-		const copiedGrid = [...grid];
+		// deep copy original grid to make mutation on the copied one which are independent
+		const copiedGrid = grid.map(row => [...row]);
 
 		if (grid[rowIdx][colIdx] !== state.nextMove && grid[rowIdx][colIdx] === 0) {
 			copiedGrid[rowIdx][colIdx] = state.nextMove;
 			setGrid(copiedGrid);
-			dispatch({ type: "MAKE_MOVE" });
+			dispatch({ type: "MAKE_MOVE" });		// X to O and vice verca
 		}
 	};
 
