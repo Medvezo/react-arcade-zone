@@ -1,3 +1,5 @@
+"use client";
+
 import { pixelFont } from "@/lib/fonts";
 import BalloonContext from "../providers/balloon-pop/BalloonProvider";
 import {
@@ -35,7 +37,9 @@ export default function GameOver({
 			<h3 className={`${pixelFont} text-4xl lg:text-6xl text-red-500 z-10`}>
 				Game Over!
 			</h3>
-			<p className="text-2xl text-green-800 z-10">Your score: {state.currentScore}</p>
+			<p className="text-2xl text-green-800 z-10">
+				Your score: {state.currentScore}
+			</p>
 			<Button
 				variant="ghost"
 				color="secondary"
