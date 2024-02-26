@@ -2,7 +2,7 @@ import { Taction } from "@/lib/types";
 
 const initialState = {
 	nextMove: 1, // X starts first
-	isGameOver: false,
+	isGameOver: true,
 	winner: 0,
 };
 
@@ -22,7 +22,8 @@ function reducer(state: any, action: Taction) {
 			};
 		case "RESTART_GAME":
 			return {
-				...initialState
+				...initialState,
+				isGameOver: false,
 			}
 		default:
 			return state;
