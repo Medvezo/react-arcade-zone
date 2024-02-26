@@ -1,26 +1,24 @@
 import { Button } from "@nextui-org/button";
 import { VscDebugRestart } from "react-icons/vsc";
 import { pixelFont } from "@/lib/fonts";
-import { useContext } from "react";
-import TTTContext from "../providers/tic-tac-toe/TTTProvider";
+import TTTCell from "../sprites/TTTCell";
 
 type PlayerWins = {
-	Player: number;
+	winner: number;
+	onRestart: () => void;
 };
 
-export default function PlayerWins(Player: PlayerWins) {
-	const { state, dispatch } = useContext(TTTContext);
-
-	// Onclick handle to restart game
-	const restartGame = () => {};
+export default function PlayerWins({ winner, onRestart }: PlayerWins) {
 
 	return (
 		<section className="w-full h-screen pt-20 z-10 overflow-hidden flex justify-center items-center flex-col gap-16">
-			<p className="text-2xl text-green-800 z-10">Winner: {state.nextMove}</p>
+			<p className={`text-2xl text-green-500 z-10 flex max-h-16 justify-center items-center  ${pixelFont}`}>
+				Winner: <TTTCell value={winner} />
+			</p>
 			<Button
 				variant="ghost"
 				color="secondary"
-				onClick={restartGame}
+				onClick={onRestart}
 				className="text-white text-xl"
 				size="lg"
 				radius="full"
