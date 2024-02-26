@@ -49,3 +49,17 @@ export const pairs = [
 	{ title: "TypeScript", src: "/pair-match/typescript.svg" },
 	{ title: "Vite ", src: "/pair-match/vitejs.svg" },
 ];
+
+export const confettiConfig: any = {
+	angle: "90",
+	spread: 360,
+	startVelocity: 40,
+	elementCount: 70,
+	dragFriction: 0.12,
+	duration: "2000",
+	stagger: 3,
+	width: "10px",
+	height: "10px",
+	perspective: "500px",
+	colors: ["#f00", "#0f0", "#00f"],
+};
