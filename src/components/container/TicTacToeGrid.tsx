@@ -3,6 +3,7 @@ import TTTCell from "@/components/sprites/TTTCell";
 import { useState, useContext } from "react";
 import TTTContext from "../providers/tic-tac-toe/TTTProvider";
 import { getWinCondition, checkWin } from "@/utils/helpers";
+import PlayerWins from "../common/PlayerWins";
 
 type TTicTacToeGrid = {
 	gridSize: number;
@@ -31,13 +32,24 @@ export default function TicTacToeGrid({ gridSize }: TTicTacToeGrid) {
 			const winCondition = getWinCondition(gridSize); // how many in a row needed from helper
 			if (checkWin(copiedGrid, rowIdx, colIdx, state.nextMove, winCondition)) {
 				console.log(`Player ${state.nextMove === 1 ? "X" : "O"} wins!`);
-				dispatch({ type: "PLAYER_WIN", player: state.nextMove });
+				dispatch({ type: "PLAYER_WIN", payload: state.nextMove });
 				// TODO: reset the game or take other actions here
 			} else {
 				dispatch({ type: "MAKE_MOVE" }); // No win yet
 			}
 		}
 	};
+
+	// Use the same function to reset the grid in restartGame
+	const restartGame = () => {
+		setGrid(createGrid());
+		dispatch({ type: "RESTART_GAME" });
+	};
+
+	// Conditionally end game
+	if (state.isGameOver) {
+		return <PlayerWins winner={state.winner} onRestart={restartGame} />;
+	}
 
 	return (
 		<>
