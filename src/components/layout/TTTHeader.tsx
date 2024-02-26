@@ -25,6 +25,31 @@ export default function TTTHeader({ onRestart }: TTTHeader) {
 				Tic Tac Toe
 			</h2>
 
+			{state.isGameOver ? ( // whether is first game or not
+				state.winner === 0 ? ( //if tie
+					<p
+						className={`text-3xl lg:text-4xl text-amber-500 flex max-h-16 justify-center items-center  ${pixelFont}`}
+					>
+						Tie !
+					</p>
+				) : state.winner && (
+					// if not tie
+					<p
+						className={`text-3xl lg:text-4xl text-lime-500 flex max-h-16 justify-center items-center  ${pixelFont}`}
+					>
+						Winner: <TTTCell value={state.winner} />
+					</p>
+				)
+			) : (
+				// showing next move
+				<p className="text-3xl lg:text-3xl font-bold text-cyan-50 z-40 flex justify-center items-center gap-3">
+					Next move:{" "}
+					<span className="w-10 h-10 ">
+						{state.nextMove === 1 ? <XSVG /> : <OSVG />}
+					</span>
+				</p>
+			)}
+
 			{state.isGameOver && ( // Grid size selection
 				<Slider
 					size="md"
@@ -42,24 +67,6 @@ export default function TTTHeader({ onRestart }: TTTHeader) {
 					getValue={(size) => `${size}x${size}`}
 					className="max-w-md"
 				/>
-			)}
-
-			{state.isGameOver ? ( // whether is first game or not
-				state.winner && ( // checking if null
-					<p
-						className={`text-2xl text-green-500 flex max-h-16 justify-center items-center  ${pixelFont}`}
-					>
-						Winner: <TTTCell value={state.winner} />
-					</p>
-				)
-			) : (
-				// showing next move
-				<p className="text-2xl lg:text-3xl font-bold text-cyan-50 z-40 flex justify-center items-center gap-3">
-					Next move:{" "}
-					<span className="w-10 h-10 ">
-						{state.nextMove === 1 ? <XSVG /> : <OSVG />}
-					</span>
-				</p>
 			)}
 
 			{state.isGameOver && ( // Play game
