@@ -25,7 +25,7 @@ export default function TTTHeader({ onRestart }: TTTHeader) {
 				Tic Tac Toe
 			</h2>
 
-			{state.isGameOver && (	// Grid size selection
+			{state.isGameOver && ( // Grid size selection
 				<Slider
 					size="md"
 					showTooltip
@@ -33,6 +33,9 @@ export default function TTTHeader({ onRestart }: TTTHeader) {
 					color="primary"
 					label="Grid Size"
 					showSteps={true}
+					onChange={(size) =>
+						dispatch({ type: "SET_GRID_SIZE", payload: size })
+					}
 					maxValue={10}
 					minValue={3}
 					defaultValue={3}
@@ -40,16 +43,17 @@ export default function TTTHeader({ onRestart }: TTTHeader) {
 					className="max-w-md"
 				/>
 			)}
-	
-			{state.isGameOver ? ( 	// whether is first game or not
-				state.winner && (	// checking if null
+
+			{state.isGameOver ? ( // whether is first game or not
+				state.winner && ( // checking if null
 					<p
 						className={`text-2xl text-green-500 flex max-h-16 justify-center items-center  ${pixelFont}`}
 					>
 						Winner: <TTTCell value={state.winner} />
 					</p>
 				)
-			) : (					// showing next move
+			) : (
+				// showing next move
 				<p className="text-2xl lg:text-3xl font-bold text-cyan-50 z-40 flex justify-center items-center gap-3">
 					Next move:{" "}
 					<span className="w-10 h-10 ">
@@ -58,7 +62,7 @@ export default function TTTHeader({ onRestart }: TTTHeader) {
 				</p>
 			)}
 
-			{state.isGameOver && (	// Play game 
+			{state.isGameOver && ( // Play game
 				<Button
 					variant="ghost"
 					color="primary"
