@@ -10,8 +10,12 @@ type TTicTacToeGrid = {
 	gridSize: number;
 };
 
-export default function TicTacToeGrid({ gridSize }: TTicTacToeGrid) {
+export default function TicTacToeGrid() {
+	const { state, dispatch } = useContext(TTTContext);
+	const gridSize = state.gridSize;	// global gridsize
+
 	const createGrid = () =>
+		// reusable function
 		Array.from({ length: gridSize }, () => new Array(gridSize).fill(0));
 
 	// Creating grid with initial empty spaces
@@ -19,8 +23,6 @@ export default function TicTacToeGrid({ gridSize }: TTicTacToeGrid) {
 		// init as () for expensive computation
 		createGrid()
 	);
-
-	const { state, dispatch } = useContext(TTTContext);
 
 	const handleMoveClick = (rowIdx: number, colIdx: number) => {
 		// deep copy original grid to make mutation on the copied one which are independent

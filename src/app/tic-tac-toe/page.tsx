@@ -10,7 +10,7 @@ export default function page() {
 			<main className="flex justify-center items-center h-screen flex-col gap-10">
 				<TTTProvider>
 
-					<TicTacToeGrid gridSize={7} />
+					<TicTacToeGrid />
 				</TTTProvider>
 			</main>
 		</>
