@@ -1,7 +1,8 @@
 "use client";
 import TTTCell from "@/components/sprites/TTTCell";
-import { useEffect, useState, useContext } from "react";
+import { useState, useContext } from "react";
 import TTTContext from "../providers/tic-tac-toe/TTTProvider";
+import { getWinCondition, checkWin } from "@/utils/helpers";
 
 type TTicTacToeGrid = {
 	gridSize: number;
@@ -9,24 +10,29 @@ type TTicTacToeGrid = {
 
 export default function TicTacToeGrid({ gridSize }: TTicTacToeGrid) {
 	// Creating grid with initial empty spaces
-	const [grid, setGrid] = useState(() =>		// init as () for expensive computation
+	const [grid, setGrid] = useState(() =>
+		// init as () for expensive computation
 		Array.from({ length: gridSize }, () => new Array(gridSize).fill(0))
 	);
 
 	const { state, dispatch } = useContext(TTTContext);
 
-	useEffect(() => {
-		console.log("Grid:", grid);
-	}, [grid]);
-
 	const handleMoveClick = (rowIdx: number, colIdx: number) => {
 		// deep copy original grid to make mutation on the copied one which are independent
-		const copiedGrid = grid.map(row => [...row]);
+		const copiedGrid = grid.map((row) => [...row]);
 
-		if (grid[rowIdx][colIdx] !== state.nextMove && grid[rowIdx][colIdx] === 0) {
-			copiedGrid[rowIdx][colIdx] = state.nextMove;
-			setGrid(copiedGrid);
-			dispatch({ type: "MAKE_MOVE" });		// X to O and vice verca
+		if (copiedGrid[rowIdx][colIdx] === 0) {
+			copiedGrid[rowIdx][colIdx] = state.nextMove; // Make the move
+			setGrid(copiedGrid); // Update the grid
+
+			const winCondition = getWinCondition(gridSize); // how many in a row needed from helper
+			if (checkWin(copiedGrid, rowIdx, colIdx, state.nextMove, winCondition)) {
+				console.log(`Player ${state.nextMove === 1 ? "X" : "O"} wins!`);
+				dispatch({ type: "PLAYER_WIN", player: state.nextMove });
+				// TODO: reset the game or take other actions here
+			} else {
+				dispatch({ type: "MAKE_MOVE" }); // No win yet
+			}
 		}
 	};
 
