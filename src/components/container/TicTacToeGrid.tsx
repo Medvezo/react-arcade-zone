@@ -1,7 +1,7 @@
 "use client";
 
 import TTTCell from "@/components/sprites/TTTCell";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import TTTContext from "../providers/tic-tac-toe/TTTProvider";
 import { getWinCondition, checkWin } from "@/utils/helpers";
 import TTTHeader from "../layout/TTTHeader";
@@ -13,6 +13,10 @@ type TTicTacToeGrid = {
 export default function TicTacToeGrid() {
 	const { state, dispatch } = useContext(TTTContext);
 	const gridSize = state.gridSize; // global gridsize
+
+	useEffect(() => {
+		console.log(`Grid size updated to: ${gridSize}`);
+	}, [gridSize]);
 
 	const createGrid = () =>
 		// reusable function
@@ -64,6 +68,7 @@ export default function TicTacToeGrid() {
 			<TTTHeader onRestart={restartGame} />
 
 			<div
+				key={gridSize} // Force re-render when gridSize changes
 				style={{
 					gridTemplateColumns: `repeat(${gridSize}, minmax(0, 1fr))`, // Dynamic columns
 				}}

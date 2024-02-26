@@ -60,7 +60,7 @@ export default function TTTHeader({ onRestart }: TTTHeader) {
 					color="primary"
 					label="Grid Size"
 					showSteps={true}
-					onChange={(size) =>	// changing grid size instantly
+					onChangeEnd={(size) =>	// changing grid size instantly
 						dispatch({ type: "SET_GRID_SIZE", payload: size })
 					}
 					maxValue={10}

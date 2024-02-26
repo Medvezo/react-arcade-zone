@@ -24,6 +24,7 @@ function reducer(state: any, action: Taction) {
 		case "RESTART_GAME":
 			return {
 				...initialState,
+				gridSize: state.gridSize, // Preserve current gridSize
 				isGameOver: false,
 			};
 		case "SET_GRID_SIZE":
