@@ -1,9 +1,10 @@
 "use client";
+
 import TTTCell from "@/components/sprites/TTTCell";
 import { useState, useContext } from "react";
 import TTTContext from "../providers/tic-tac-toe/TTTProvider";
 import { getWinCondition, checkWin } from "@/utils/helpers";
-import PlayerWins from "../common/PlayerWins";
+import TTTHeader from "../layout/TTTHeader";
 
 type TTicTacToeGrid = {
 	gridSize: number;
@@ -48,23 +49,27 @@ export default function TicTacToeGrid({ gridSize }: TTicTacToeGrid) {
 
 	// Conditionally end game
 	if (state.isGameOver) {
-		return <PlayerWins winner={state.winner} onRestart={restartGame} />;
+		return <TTTHeader onRestart={restartGame} />;
 	}
 
 	return (
 		<>
+			<TTTHeader onRestart={restartGame} />
+
 			<div
 				style={{
 					gridTemplateColumns: `repeat(${gridSize}, minmax(0, 1fr))`, // Dynamic columns
 				}}
-				className={`grid w-[400px] sm:w-[500px] bg-teal-700 bg-opacity-30 p-5 rounded-3xl`}>
+				className={`grid w-[400px] sm:w-[500px] bg-teal-700 bg-opacity-30 p-5 rounded-3xl`}
+			>
 				{grid.map((row: Array<number>, rowIdx: number) => (
 					<div key={rowIdx} className=" ">
 						{row.map((cell: number, colIdx: number) => (
 							<div
 								key={`${rowIdx} ${colIdx}`}
 								onClick={() => handleMoveClick(rowIdx, colIdx)}
-								className={` aspect-square border-opacity-50  border  border-white cursor-pointer hover:bg-gray-700 hover:bg-opacity-30`}>
+								className={` aspect-square border-opacity-50  border  border-white cursor-pointer hover:bg-gray-700 hover:bg-opacity-30`}
+							>
 								<TTTCell value={grid[rowIdx][colIdx]} />
 							</div>
 						))}
