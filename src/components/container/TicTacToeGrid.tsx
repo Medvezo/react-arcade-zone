@@ -12,7 +12,7 @@ type TTicTacToeGrid = {
 
 export default function TicTacToeGrid() {
 	const { state, dispatch } = useContext(TTTContext);
-	const gridSize = state.gridSize;	// global gridsize
+	const gridSize = state.gridSize; // global gridsize
 
 	const createGrid = () =>
 		// reusable function
@@ -33,12 +33,17 @@ export default function TicTacToeGrid() {
 			setGrid(copiedGrid); // Update the grid
 
 			const winCondition = getWinCondition(gridSize); // how many in a row needed from helper
+
 			if (checkWin(copiedGrid, rowIdx, colIdx, state.nextMove, winCondition)) {
-				console.log(`Player ${state.nextMove === 1 ? "X" : "O"} wins!`);
 				dispatch({ type: "PLAYER_WIN", payload: state.nextMove });
-				// TODO: reset the game or take other actions here
 			} else {
-				dispatch({ type: "MAKE_MOVE" }); // No win yet
+				// Checking if Tie
+				const isTie = copiedGrid.every((row) => row.every((cell) => cell != 0));
+				if (isTie) {
+					dispatch({ type: "PLAYER_WIN", payload: 0 });
+				} else {
+					dispatch({ type: "MAKE_MOVE" }); // No win yet
+				}
 			}
 		}
 	};
