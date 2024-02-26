@@ -7,9 +7,8 @@ export default function page() {
 			{/* Background image */}
 			<div className="fixed w-full h-screen bg-synth bg-cover blur-3xl bg-center bg-no-repeat -z-10" />
 
-			<main className="flex justify-center items-center h-screen flex-col gap-10">
+			<main className="flex justify-center items-center h-screen flex-col gap-10 overflow-hidden">
 				<TTTProvider>
-
 					<TicTacToeGrid />
 				</TTTProvider>
 			</main>
