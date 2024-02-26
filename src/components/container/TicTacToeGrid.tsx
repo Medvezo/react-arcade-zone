@@ -9,10 +9,13 @@ type TTicTacToeGrid = {
 };
 
 export default function TicTacToeGrid({ gridSize }: TTicTacToeGrid) {
+	const createGrid = () =>
+		Array.from({ length: gridSize }, () => new Array(gridSize).fill(0));
+
 	// Creating grid with initial empty spaces
 	const [grid, setGrid] = useState(() =>
 		// init as () for expensive computation
-		Array.from({ length: gridSize }, () => new Array(gridSize).fill(0))
+		createGrid()
 	);
 
 	const { state, dispatch } = useContext(TTTContext);
