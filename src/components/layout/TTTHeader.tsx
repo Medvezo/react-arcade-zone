@@ -6,7 +6,7 @@ import { useContext } from "react";
 import XSVG from "@/../public/tic-tac-toe/X";
 import OSVG from "@/../public/tic-tac-toe/O";
 import TTTCell from "../sprites/TTTCell";
-import { VscDebugRestart } from "react-icons/vsc";
+import { FaPlay } from "react-icons/fa";
 import { Button } from "@nextui-org/button";
 import { Slider } from "@nextui-org/slider";
 import { FaCircleInfo } from "react-icons/fa6";
@@ -22,7 +22,7 @@ export default function TTTHeader({ onRestart }: TTTHeader) {
 	return (
 		<header className="flex flex-col justify-center items-center gap-5 lg:gap-12 px-3 ">
 			<h2
-				className={` z-40 pt-32 text-4xl lg:text-5xl font-bold text-center ${pixelFont.className}`}
+				className={` pt-10 text-4xl lg:text-5xl font-bold text-center ${pixelFont.className}`}
 			>
 				Tic Tac Toe
 			</h2>
@@ -80,7 +80,7 @@ export default function TTTHeader({ onRestart }: TTTHeader) {
 							<Tooltip
 								color="warning"
 								className="w-[200px] px-1.5"
-								content={
+								content={	
 									<section className="flex flex-col gap-3">
 										<h4 className="text-center text-bold text-lg text-blue-700">
 											Needed to win:{" "}
@@ -97,7 +97,7 @@ export default function TTTHeader({ onRestart }: TTTHeader) {
 								}
 								placement="right"
 							>
-								<span className="transition-opacity opacity-80 hover:opacity-100">
+								<span className="transition-opacity opacity-80 hover:opacity-100 text-amber-400">
 									<FaCircleInfo />
 								</span>
 							</Tooltip>
@@ -114,7 +114,7 @@ export default function TTTHeader({ onRestart }: TTTHeader) {
 					className="text-white text-xl"
 					size="lg"
 					radius="full"
-					startContent={<VscDebugRestart className="h-8 w-8" />}
+					startContent={<FaPlay className="h-6 w-6" />}
 				>
 					Play
 				</Button>
