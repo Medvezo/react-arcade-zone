@@ -25,24 +25,28 @@ export default function TTTHeader({ onRestart }: TTTHeader) {
 				Tic Tac Toe
 			</h2>
 
-			<Slider
-				size="sm"
-				step={1}
-				color="foreground"
-				label="Grid Size"
-				showSteps={true}
-				maxValue={10}
-				minValue={3}
-				defaultValue={3}
-				className="max-w-md"
-			/>
+			{state.isGameOver && (
+				<Slider
+					size="sm"
+					step={1}
+					color="foreground"
+					label="Grid Size"
+					showSteps={true}
+					maxValue={10}
+					minValue={3}
+					defaultValue={3}
+					className="max-w-md"
+				/>
+			)}
 
 			{state.isGameOver ? (
-				<p
-					className={`text-2xl text-green-500 flex max-h-16 justify-center items-center  ${pixelFont}`}
-				>
-				Winner: <TTTCell value={state.winner} />
-				</p>
+				state.winner && (
+					<p
+						className={`text-2xl text-green-500 flex max-h-16 justify-center items-center  ${pixelFont}`}
+					>
+						Winner: <TTTCell value={state.winner} />
+					</p>
+				)
 			) : (
 				<p className="text-2xl lg:text-3xl font-bold text-cyan-50 z-40 flex justify-center items-center gap-3">
 					Next move:{" "}
@@ -52,17 +56,19 @@ export default function TTTHeader({ onRestart }: TTTHeader) {
 				</p>
 			)}
 
-			<Button
-				variant="ghost"
-				color="secondary"
-				onClick={onRestart}
-				className="text-white text-xl"
-				size="lg"
-				radius="full"
-				startContent={<VscDebugRestart className="h-8 w-8" />}
-			>
-				Play
-			</Button>
+			{state.isGameOver && (
+				<Button
+					variant="ghost"
+					color="secondary"
+					onClick={onRestart}
+					className="text-white text-xl"
+					size="lg"
+					radius="full"
+					startContent={<VscDebugRestart className="h-8 w-8" />}
+				>
+					Play
+				</Button>
+			)}
 		</header>
 	);
 }

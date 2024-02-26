@@ -3,7 +3,7 @@ import { Taction } from "@/lib/types";
 const initialState = {
 	nextMove: 1, // X starts first
 	isGameOver: true,
-	winner: 0,
+	winner: null,
 };
 
 function reducer(state: any, action: Taction) {
