@@ -5,18 +5,22 @@ import { useState, useContext, useEffect } from "react";
 import TTTContext from "../providers/tic-tac-toe/TTTProvider";
 import { getWinCondition, checkWin } from "@/utils/helpers";
 import TTTHeader from "../layout/TTTHeader";
-
-type TTicTacToeGrid = {
-	gridSize: number;
-};
+import Confetti from "react-dom-confetti";
+import { confettiConfig } from "@/lib/const";
 
 export default function TicTacToeGrid() {
 	const { state, dispatch } = useContext(TTTContext);
 	const gridSize = state.gridSize; // global gridsize
 
+	// State to handle confetti delaying
+	const [showConfetti, setShowConfetti] = useState(false);
+
 	useEffect(() => {
-		console.log(`Grid size updated to: ${gridSize}`);
-	}, [gridSize]);
+		setShowConfetti(false);
+		if (state.isGameOver && state.winner) {
+			setShowConfetti(true);
+		}
+	}, [state.isGameOver, state.winner]);
 
 	const createGrid = () =>
 		// reusable function
@@ -58,36 +62,34 @@ export default function TicTacToeGrid() {
 		dispatch({ type: "RESTART_GAME" });
 	};
 
-	// Conditionally end game
-	if (state.isGameOver) {
-		return <TTTHeader onRestart={restartGame} />;
-	}
 
 	return (
 		<>
 			<TTTHeader onRestart={restartGame} />
-
-			<div
-				key={gridSize} // Force re-render when gridSize changes
-				style={{
-					gridTemplateColumns: `repeat(${gridSize}, minmax(0, 1fr))`, // Dynamic columns
-				}}
-				className={`grid w-[400px] sm:w-[500px] bg-teal-700 bg-opacity-30 p-5 rounded-3xl`}
-			>
-				{grid.map((row: Array<number>, rowIdx: number) => (
-					<div key={rowIdx} className=" ">
-						{row.map((cell: number, colIdx: number) => (
-							<div
-								key={`${rowIdx} ${colIdx}`}
-								onClick={() => handleMoveClick(rowIdx, colIdx)}
-								className={` aspect-square border-opacity-50  border  border-white cursor-pointer hover:bg-gray-700 hover:bg-opacity-30`}
-							>
-								<TTTCell value={grid[rowIdx][colIdx]} />
-							</div>
-						))}
-					</div>
-				))}
-			</div>
+			<Confetti active={showConfetti} config={confettiConfig} />
+			{!state.isGameOver &&
+				<div
+					key={gridSize} // Force re-render when gridSize changes
+					style={{
+						gridTemplateColumns: `repeat(${gridSize}, minmax(0, 1fr))`, // Dynamic columns
+					}}
+					className={`grid w-[400px] sm:w-[500px] bg-teal-700 bg-opacity-30 p-5 rounded-3xl`}
+				>
+					{grid.map((row: Array<number>, rowIdx: number) => (
+						<div key={rowIdx} className=" ">
+							{row.map((cell: number, colIdx: number) => (
+								<div
+									key={`${rowIdx} ${colIdx}`}
+									onClick={() => handleMoveClick(rowIdx, colIdx)}
+									className={` aspect-square border-opacity-50  border  border-white cursor-pointer hover:bg-gray-700 hover:bg-opacity-30`}
+								>
+									<TTTCell value={grid[rowIdx][colIdx]} />
+								</div>
+							))}
+						</div>
+					))}
+				</div>
+			}
 		</>
 	);
 }
