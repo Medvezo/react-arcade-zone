@@ -4,6 +4,7 @@ const initialState = {
 	nextMove: 1, // X starts first
 	isGameOver: true,
 	winner: null,
+	gridSize: 3,
 };
 
 function reducer(state: any, action: Taction) {
@@ -24,6 +25,11 @@ function reducer(state: any, action: Taction) {
 			return {
 				...initialState,
 				isGameOver: false,
+			};
+		case "SET_GRID_SIZE":
+			return {
+				...state,
+				gridSize: action.payload,
 			}
 		default:
 			return state;
