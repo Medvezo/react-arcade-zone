@@ -9,6 +9,8 @@ import TTTCell from "../sprites/TTTCell";
 import { VscDebugRestart } from "react-icons/vsc";
 import { Button } from "@nextui-org/button";
 import { Slider } from "@nextui-org/slider";
+import { FaCircleInfo } from "react-icons/fa6";
+import { Tooltip } from "@nextui-org/tooltip";
 
 type TTTHeader = {
 	onRestart: () => void;
@@ -33,12 +35,15 @@ export default function TTTHeader({ onRestart }: TTTHeader) {
 						Tie !
 					</p>
 				) : (
-					state.winner && (	// to check if not null
+					state.winner && ( // to check if not null
 						// if not tie
 						<p
 							className={`text-3xl lg:text-4xl font-bold text-lime-500 flex max-h-16 justify-center items-center gap-5 lg:gap-10 ${pixelFont}`}
 						>
-							Winner: <span className="w-16 h-16 lg:h-24 lg:w-24"><TTTCell value={state.winner} /></span>
+							Winner:{" "}
+							<span className="w-16 h-16 lg:h-24 lg:w-24">
+								<TTTCell value={state.winner} />
+							</span>
 						</p>
 					)
 				)
@@ -60,14 +65,44 @@ export default function TTTHeader({ onRestart }: TTTHeader) {
 					color="primary"
 					label="Grid Size"
 					showSteps={true}
-					onChangeEnd={(size) =>	// changing grid size instantly
-						dispatch({ type: "SET_GRID_SIZE", payload: size })
-					}
+					onChangeEnd={(
+						size // changing grid size instantly
+					) => dispatch({ type: "SET_GRID_SIZE", payload: size })}
 					maxValue={10}
 					minValue={3}
 					defaultValue={3}
 					getValue={(size) => `${size}x${size}`}
 					className="max-w-md"
+					// Add custom tooltip label
+					renderLabel={({ children, ...props }) => (
+						<label {...props} className="text-medium flex gap-2 items-center">
+							{children}
+							<Tooltip
+								color="warning"
+								className="w-[200px] px-1.5"
+								content={
+									<section className="flex flex-col gap-3">
+										<h4 className="text-center text-bold text-lg text-blue-700">
+											Needed to win:{" "}
+										</h4>
+										<span>
+											<b className=" text-blue-600">4</b> in a row
+											between 4x4-6x6
+										</span>
+										<span>
+											<b className=" text-blue-600">5</b> in a row more
+											than 7x7
+										</span>
+									</section>
+								}
+								placement="right"
+							>
+								<span className="transition-opacity opacity-80 hover:opacity-100">
+									<FaCircleInfo />
+								</span>
+							</Tooltip>
+						</label>
+					)}
 				/>
 			)}
 
