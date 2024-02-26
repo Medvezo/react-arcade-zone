@@ -14,6 +14,11 @@ export const games = [
 		href: "/pair-match",
 		screenshot: "/ss/Pair-Match-SS.webp",
 	},
+	{
+		title: "Tic-Tac-Toe",
+		href: "/tic-tac-toe",
+		screenshot: "/ss/tic-tac-toe-SS.webp	",
+	},
 ];
 
 //! Baloon Pop Game
