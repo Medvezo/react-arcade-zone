@@ -69,3 +69,9 @@ img {
 ::-webkit-scrollbar-thumb:hover {
 	background: #fff;
 }
+
+
+/* Only keeping the transform-origin property which isn't easily done with Tailwind */
+.wheel-canvas {
+	transform-origin: center;
+}
